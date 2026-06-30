@@ -1,0 +1,24 @@
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# astro generated
+.astro/
+
+# logs
+*.log
+.npm-install.log
+npm-debug.log*
+
+# environment
+.env
+.env.*
+!.env.example
+
+# os / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json

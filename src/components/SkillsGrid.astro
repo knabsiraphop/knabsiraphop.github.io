@@ -1,0 +1,35 @@
+---
+import { skills } from '../data/site';
+---
+
+<div class="skills">
+  {
+    skills.map((s) => (
+      <div class="skills__card surface" data-reveal>
+        <h3 class="skills__group">{s.group}</h3>
+        <div class="skills__items">
+          {s.items.map((i) => (
+            <span class="chip">{i}</span>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .skills__card { padding: 20px; }
+  .skills__group {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .skills__items { display: flex; flex-wrap: wrap; gap: 8px; }
+</style>

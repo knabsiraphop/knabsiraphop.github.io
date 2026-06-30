@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import WebGLEmbed from '../../components/WebGLEmbed.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+// Related projects (share at least one tag), max 3.
+const all = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const related = all
+  .filter((p) => p.id !== project.id && p.data.tags.some((t) => data.tags.includes(t)))
+  .slice(0, 3);
+
+// YouTube id extractor for video heroes.
+function ytId(url?: string): string | null {
+  if (!url) return null;
+  const m = url.match(/(?:youtu\.be\/|[?&]v=|embed\/)([\w-]{11})/);
+  return m ? m[1] : null;
+}
+const yt = data.hero.type === 'video' ? ytId(data.hero.src) : null;
+
+// External link buttons (only render the ones that are set).
+const linkDefs = [
+  { key: 'play', label: 'Play now', icon: 'play' },
+  { key: 'playstore', label: 'Google Play', icon: 'external' },
+  { key: 'appstore', label: 'App Store', icon: 'external' },
+  { key: 'video', label: 'Watch trailer', icon: 'play' },
+  { key: 'github', label: 'GitHub', icon: 'github' },
+  { key: 'site', label: 'Website', icon: 'external' },
+] as const;
+const linkMap = data.links as Record<string, string | undefined>;
+const links = linkDefs.filter((l) => linkMap[l.key]);
+---
+
+<BaseLayout title={data.title} description={data.summary}>
+  <article class="detail">
+    <div class="container">
+      <a class="back" href="/projects/"><Icon name="arrow" size={16} class="back__icon" /> Back to projects</a>
+
+      <header class="detail__head" data-reveal>
+        <div class="detail__chips">
+          <span class="chip chip--live">{data.status}</span>
+          {data.tags.map((t) => <span class="chip">{t}</span>)}
+        </div>
+        <h1 class="detail__title">{data.title}</h1>
+        <p class="detail__sum">{data.summary}</p>
+
+        <dl class="detail__facts">
+          <div><dt>Role</dt><dd>{data.role}</dd></div>
+          <div><dt>Period</dt><dd>{data.period}</dd></div>
+          <div><dt>Platforms</dt><dd>{data.platforms.length ? data.platforms.join(', ') : '—'}</dd></div>
+        </dl>
+
+        {
+          links.length > 0 && (
+            <div class="detail__links">
+              {links.map((l) => (
+                <a class="btn btn--sm btn--primary" href={linkMap[l.key]} target="_blank" rel="noopener">
+                  <Icon name={l.icon} size={15} /> {l.label}
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </header>
+
+      <div class="detail__media" data-reveal>
+        {data.hero.type === 'webgl' && <WebGLEmbed src={data.hero.src} poster={data.hero.poster} title={data.title} />}
+
+        {
+          data.hero.type === 'video' &&
+            (yt ? (
+              <div class="video">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${yt}`}
+                  title={`${data.title} trailer`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                />
+              </div>
+            ) : (
+              <div class="ph">
+                <Icon name="play" size={28} class="ph__icon" />
+                <span class="ph__label">Trailer coming soon</span>
+                <span class="ph__hint">gameplay video to be added</span>
+              </div>
+            ))
+        }
+
+        {
+          data.hero.type === 'image' &&
+            (data.hero.src ? (
+              <img class="detail__img" src={data.hero.src} alt={`${data.title} screenshot`} loading="lazy" />
+            ) : (
+              <div class="ph">
+                <Icon name="gamepad" size={30} class="ph__icon" />
+                <span class="ph__label">Screenshots coming soon</span>
+                <span class="ph__hint">images to be added</span>
+              </div>
+            ))
+        }
+      </div>
+
+      <div class="detail__body">
+        <div class="prose" data-reveal>
+          <Content />
+        </div>
+
+        <aside class="detail__aside">
+          {
+            data.tech.length > 0 && (
+              <div class="surface aside__card" data-reveal>
+                <h2 class="aside__h">Tech &amp; tools</h2>
+                <div class="aside__tech">
+                  {data.tech.map((t) => (
+                    <span class="chip chip--accent">{t}</span>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+          <div class="surface aside__card aside__cta" data-reveal>
+            <h2 class="aside__h">Want the details?</h2>
+            <p class="muted">Happy to walk through the architecture and decisions behind this project.</p>
+            <a class="btn btn--sm btn--primary" href="/#contact"><Icon name="mail" size={15} /> Get in touch</a>
+          </div>
+        </aside>
+      </div>
+
+      {
+        related.length > 0 && (
+          <section class="related">
+            <h2 class="related__h">More projects</h2>
+            <div class="related__grid">
+              {related.map((p) => (
+                <ProjectCard project={p} />
+              ))}
+            </div>
+          </section>
+        )
+      }
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .detail { padding-block: clamp(24px, 4vw, 40px) clamp(48px, 8vw, 90px); }
+
+  .back { display: inline-flex; align-items: center; gap: 8px; color: var(--text-dim); font-family: var(--font-display); font-size: 14px; font-weight: 500; margin-bottom: 26px; transition: color 0.15s ease; }
+  .back:hover { color: var(--accent); }
+  .back__icon { transform: rotate(180deg); }
+
+  .detail__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .detail__title { font-size: clamp(30px, 5vw, 48px); }
+  .detail__sum { color: var(--text-dim); font-size: 18px; margin-top: 12px; max-width: 65ch; }
+
+  .detail__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+  }
+  .detail__facts dt { font-family: var(--font-display); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-dim); margin-bottom: 4px; }
+  .detail__facts dd { font-size: 15px; font-weight: 500; }
+
+  .detail__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+
+  .detail__media { margin-top: 34px; }
+  .detail__img { width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); }
+  .video :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .detail__body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    margin-top: 44px;
+    align-items: start;
+  }
+  .detail__aside { display: grid; gap: 16px; position: sticky; top: 88px; }
+  .aside__card { padding: 20px; }
+  .aside__h { font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px; }
+  .aside__tech { display: flex; flex-wrap: wrap; gap: 8px; }
+  .aside__cta p { font-size: 14px; margin-bottom: 14px; }
+
+  .related { margin-top: clamp(48px, 8vw, 80px); }
+  .related__h { font-size: 24px; margin-bottom: 22px; }
+  .related__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; }
+
+  @media (max-width: 860px) {
+    .detail__body { grid-template-columns: 1fr; gap: 28px; }
+    .detail__aside { position: static; }
+  }
+</style>

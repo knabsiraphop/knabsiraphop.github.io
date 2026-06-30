@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+// Build the unique tag list for the filter bar.
+const tagSet = new Set<string>();
+for (const p of projects) for (const t of p.data.tags) tagSet.add(t);
+const tags = ['All', ...Array.from(tagSet).sort()];
+---
+
+<BaseLayout
+  title="Projects"
+  description="Shipped mobile and WebGL games, live-ops systems, Unity editor tools, and open-source packages by Siraphop Puriwattanakul."
+>
+  <section class="section">
+    <div class="container">
+      <div class="section__head" data-reveal>
+        <p class="eyebrow">Portfolio</p>
+        <h1 class="section__title">All projects</h1>
+        <p class="section__sub">
+          Shipped mobile &amp; WebGL games, live-ops systems, editor tools, and open-source packages. Use the filters to
+          narrow down — several have playable demos.
+        </p>
+      </div>
+
+      <div class="filters" data-reveal role="group" aria-label="Filter projects by tag">
+        {
+          tags.map((t, i) => (
+            <button class:list={['filter', { 'is-active': i === 0 }]} data-filter={t} type="button">
+              {t}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="cards" data-cards>
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+      <p class="cards__empty muted" data-empty hidden>No projects match that filter.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLAnchorElement>('[data-cards] > a');
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter || 'All';
+      buttons.forEach((b) => b.classList.toggle('is-active', b === btn));
+      let shown = 0;
+      cards.forEach((card) => {
+        const tags = (card.dataset.tags || '').split('|');
+        const show = filter === 'All' || tags.includes(filter);
+        card.style.display = show ? '' : 'none';
+        if (show) shown += 1;
+      });
+      if (empty) empty.hidden = shown > 0;
+    })
+  );
+</script>
+
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+  .filter {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .filter:hover { color: var(--text); border-color: var(--accent); }
+  .filter.is-active { color: var(--accent-ink); background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+  .cards__empty { margin-top: 28px; text-align: center; }
+</style>

@@ -1,0 +1,114 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  src?: string; // path to the Unity WebGL build folder, e.g. /games/once-pro-shoot/
+  poster?: string; // poster image shown before the user clicks Play
+  title: string;
+}
+const { src, poster, title } = Astro.props;
+---
+
+{
+  src ? (
+    <div class="webgl" data-webgl data-src={src} data-title={title}>
+      <button class="webgl__play" type="button" data-webgl-play aria-label={`Play ${title} in the browser`}>
+        {poster ? (
+          <img class="webgl__poster" src={poster} alt="" loading="lazy" />
+        ) : (
+          <span class="webgl__poster webgl__poster--ph" />
+        )}
+        <span class="webgl__overlay">
+          <span class="webgl__btn">
+            <Icon name="play" size={28} />
+          </span>
+          <span class="webgl__label">Play in browser</span>
+          <span class="webgl__hint">Loads the Unity WebGL build</span>
+        </span>
+      </button>
+    </div>
+  ) : (
+    <div class="ph webgl__pending">
+      <Icon name="gamepad" size={30} class="ph__icon" />
+      <span class="ph__label">Playable demo coming soon</span>
+      <span class="ph__hint">WebGL build to be added</span>
+    </div>
+  )
+}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-webgl]').forEach((wrap) => {
+    const btn = wrap.querySelector<HTMLButtonElement>('[data-webgl-play]');
+    btn?.addEventListener('click', () => {
+      const src = wrap.dataset.src;
+      if (!src) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = wrap.dataset.title || 'WebGL game';
+      iframe.className = 'webgl__frame';
+      iframe.loading = 'lazy';
+      iframe.setAttribute('allow', 'autoplay; fullscreen; gamepad; clipboard-write');
+      iframe.setAttribute('allowfullscreen', 'true');
+      wrap.replaceChildren(iframe);
+      wrap.classList.add('is-playing');
+    });
+  });
+</script>
+
+<style>
+  .webgl {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #05070b;
+  }
+  .webgl__play {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    background: #05070b;
+  }
+  .webgl__poster { width: 100%; height: 100%; object-fit: cover; }
+  .webgl__poster--ph {
+    display: block;
+    background:
+      radial-gradient(420px 220px at 50% 36%, rgba(77, 163, 255, 0.18), transparent 70%),
+      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0 14px, transparent 14px 28px),
+      var(--surface-2);
+  }
+  .webgl__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(180deg, rgba(5, 7, 11, 0.15), rgba(5, 7, 11, 0.55));
+    transition: background 0.2s ease;
+  }
+  .webgl__play:hover .webgl__overlay { background: linear-gradient(180deg, rgba(5, 7, 11, 0.05), rgba(5, 7, 11, 0.4)); }
+  .webgl__btn {
+    display: grid;
+    place-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: var(--accent-ink);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 10px 34px -8px rgba(77, 163, 255, 0.6);
+    padding-left: 4px;
+    transition: transform 0.2s ease;
+  }
+  .webgl__play:hover .webgl__btn { transform: scale(1.08); }
+  .webgl__label { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: #fff; }
+  .webgl__hint { font-size: 12.5px; color: rgba(230, 237, 243, 0.75); }
+  .webgl :global(.webgl__frame) { width: 100%; height: 100%; border: 0; display: block; }
+  .webgl__pending { aspect-ratio: 16 / 9; }
+</style>

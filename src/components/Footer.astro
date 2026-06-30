@@ -1,0 +1,43 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="footer__name">{site.name}</span>
+      <span class="muted">{site.role} · {site.location}</span>
+    </div>
+    <div class="footer__links">
+      <a href={`mailto:${site.email}`} aria-label="Email"><Icon name="mail" size={20} /></a>
+      <a href={site.socials.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={20} /></a>
+      <a href={site.socials.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" size={20} /></a>
+    </div>
+  </div>
+  <div class="container footer__legal muted">
+    © {year} {site.name}. Built with Astro.
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-block: 36px 28px;
+    margin-top: 40px;
+  }
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer__brand { display: flex; flex-direction: column; gap: 3px; }
+  .footer__name { font-family: var(--font-display); font-weight: 600; font-size: 16px; }
+  .footer__links { display: flex; gap: 14px; }
+  .footer__links a { color: var(--text-dim); transition: color 0.15s ease; }
+  .footer__links a:hover { color: var(--accent); }
+  .footer__legal { margin-top: 22px; font-size: 13px; }
+</style>
