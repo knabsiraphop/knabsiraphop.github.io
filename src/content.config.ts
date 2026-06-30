@@ -15,6 +15,8 @@ const projects = defineCollection({
     featured: z.boolean().default(false), // shown on the home page
     summary: z.string(), // one-line description for cards
     cover: z.string().optional(), // card thumbnail under /img/projects (blank => placeholder)
+    icon: z.string().optional(), // square app icon shown beside the detail-page title
+    gallery: z.array(z.string()).default([]), // screenshot grid on the detail page
     hero: z
       .object({
         type: z.enum(['webgl', 'video', 'image']).default('image'),
@@ -30,6 +32,8 @@ const projects = defineCollection({
         github: z.string().optional(),
         play: z.string().optional(), // external playable URL
         video: z.string().optional(), // youtube / trailer URL
+        facebook: z.string().optional(), // official facebook page
+        facebookGroup: z.string().optional(), // community group
         site: z.string().optional(),
       })
       .default({}),
