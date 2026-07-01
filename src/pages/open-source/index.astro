@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../data/site';
+import { fetchPublishedPackages, plannedPackages } from '../../data/packages';
+
+const packages = await fetchPublishedPackages();
+const totalStars = packages.reduce((n, p) => n + p.stars, 0);
+
+// Category filter chips (published packages only).
+const catSet = new Set(packages.map((p) => p.category));
+const categories = ['All', ...Array.from(catSet).sort()];
+---
+
+<BaseLayout
+  title="Open Source"
+  description="Open-source Unity packages by Siraphop Puriwattanakul — production-grade UPM modules under the KidzDev brand, installable via git URL."
+>
+  <section class="section">
+    <div class="container">
+      <div class="section__head" data-reveal>
+        <p class="eyebrow">KidzDev · Unity Packages</p>
+        <h1 class="section__title">Open source</h1>
+        <p class="section__sub">
+          Reusable, production-grade Unity modules I maintain as open-source UPM packages — extracted from patterns I rely
+          on across shipped titles. {packages.length} packages, all Unity&nbsp;6 ready.
+        </p>
+        <div class="os__meta">
+          <span class="chip chip--accent">{packages.length} packages</span>
+          {totalStars > 0 && <span class="chip">★ {totalStars}</span>}
+          <a class="chip os__ghlink" href={site.socials.github} target="_blank" rel="noopener">
+            <Icon name="github" size={14} /> github.com/{site.socials.github.split('/').pop()}
+          </a>
+        </div>
+      </div>
+
+      <div class="install surface" data-reveal>
+        <Icon name="code" size={18} class="install__icon" />
+        <div>
+          <p class="install__title">Install any package via UPM</p>
+          <p class="install__hint muted">
+            In Unity: <strong>Window → Package Manager → + → Add package from git URL</strong>, then paste the package's
+            git URL (use the <em>Copy git URL</em> button on each card).
+          </p>
+        </div>
+      </div>
+
+      <div class="filters" data-reveal role="group" aria-label="Filter packages by category">
+        {
+          categories.map((c, i) => (
+            <button class:list={['filter', { 'is-active': i === 0 }]} data-filter={c} type="button">
+              {c}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="pkgs" data-cards>
+        {
+          packages.map((p) => (
+            <article class="pkg" data-reveal data-cat={p.category}>
+              <div class="pkg__top">
+                <h2 class="pkg__name">{p.name}</h2>
+                {p.version && <span class="pkg__ver">v{p.version}</span>}
+              </div>
+              <p class="pkg__desc">{p.description}</p>
+              <div class="pkg__tags">
+                <span class="chip chip--accent">{p.category}</span>
+                {p.unity && <span class="chip">Unity {p.unity}</span>}
+                {p.stars > 0 && <span class="chip">★ {p.stars}</span>}
+              </div>
+              {p.upm && <code class="pkg__upm">{p.upm}</code>}
+              <div class="pkg__actions">
+                <a class="btn btn--sm" href={p.url} target="_blank" rel="noopener">
+                  <Icon name="github" size={15} /> GitHub
+                </a>
+                <button class="btn btn--sm btn--primary" type="button" data-copy={p.git}>
+                  <Icon name="code" size={15} /> <span>Copy git URL</span>
+                </button>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <p class="pkgs__empty muted" data-empty hidden>No packages in that category.</p>
+
+      {
+        plannedPackages.length > 0 && (
+          <div class="planned" data-reveal>
+            <h2 class="planned__h">In the works</h2>
+            <p class="section__sub">Packages from my stock being prepared for open-source release.</p>
+            <div class="pkgs">
+              {plannedPackages.map((p) => (
+                <article class="pkg pkg--planned">
+                  <div class="pkg__top">
+                    <h2 class="pkg__name">{p.name}</h2>
+                    <span class="pkg__ver pkg__ver--soon">Planned</span>
+                  </div>
+                  <p class="pkg__desc">{p.description}</p>
+                  {p.category && (
+                    <div class="pkg__tags">
+                      <span class="chip">{p.category}</span>
+                    </div>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Category filter
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-cards] > .pkg');
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter || 'All';
+      buttons.forEach((b) => b.classList.toggle('is-active', b === btn));
+      let shown = 0;
+      cards.forEach((card) => {
+        const show = filter === 'All' || card.dataset.cat === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) shown += 1;
+      });
+      if (empty) empty.hidden = shown > 0;
+    })
+  );
+
+  // Copy git URL to clipboard
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    const label = btn.querySelector('span');
+    const original = label?.textContent || 'Copy git URL';
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy || '');
+        if (label) label.textContent = 'Copied!';
+        btn.classList.add('is-copied');
+        setTimeout(() => {
+          if (label) label.textContent = original;
+          btn.classList.remove('is-copied');
+        }, 1600);
+      } catch {
+        /* clipboard unavailable */
+      }
+    });
+  });
+</script>
+
+<style>
+  .os__meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; align-items: center; }
+  .os__ghlink { color: var(--text-dim); }
+  .os__ghlink:hover { color: var(--text); border-color: var(--accent); }
+
+  .install {
+    display: flex;
+    gap: 14px;
+    align-items: start;
+    padding: 16px 18px;
+    margin: 28px 0 24px;
+  }
+  .install__icon { color: var(--accent-2); margin-top: 2px; flex: none; }
+  .install__title { font-family: var(--font-display); font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .install__hint { font-size: 13.5px; line-height: 1.55; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .filter {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .filter:hover { color: var(--text); border-color: var(--accent); }
+  .filter.is-active { color: var(--accent-ink); background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; }
+
+  .pkgs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .pkgs__empty { margin-top: 28px; text-align: center; }
+
+  .pkg {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .pkg:hover { transform: translateY(-3px); border-color: rgba(77, 163, 255, 0.5); box-shadow: var(--shadow); }
+  .pkg__top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .pkg__name { font-size: 17px; line-height: 1.25; }
+  .pkg__ver { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--accent-2); flex: none; }
+  .pkg__ver--soon { color: var(--text-dim); }
+  .pkg__desc { font-size: 14px; color: #cfd8e2; line-height: 1.55; flex: 1; }
+  .pkg__tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .pkg__upm {
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 7px 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .pkg__actions { display: flex; gap: 8px; margin-top: 2px; }
+  .pkg__actions .btn { flex: 1; justify-content: center; }
+  .btn.is-copied { background: var(--accent-2); color: var(--accent-ink); border-color: transparent; }
+
+  .pkg--planned { opacity: 0.66; border-style: dashed; }
+  .pkg--planned:hover { transform: none; box-shadow: none; border-color: var(--border); }
+
+  .planned { margin-top: clamp(44px, 7vw, 72px); }
+  .planned__h { font-size: 22px; margin-bottom: 6px; }
+  .planned .section__sub { margin-bottom: 24px; }
+</style>
