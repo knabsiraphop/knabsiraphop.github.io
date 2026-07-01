@@ -1,7 +1,7 @@
 // Central site config — edit contact details / links here once.
 export const site = {
   name: 'Siraphop Puriwattanakul',
-  nick: 'Knab',
+  nick: 'Bank',
   role: 'Unity Game Developer',
   tagline:
     'I build and ship live mobile & WebGL games in Unity / C# — from a 5-year multiplayer MMO to solo titles on Google Play, the App Store, and the web.',
