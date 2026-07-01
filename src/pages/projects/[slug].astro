@@ -53,7 +53,7 @@ const links = linkDefs.filter((l) => linkMap[l.key]);
 
       <header class="detail__head" data-reveal>
         <div class="detail__chips">
-          <span class="chip chip--live">{data.status}</span>
+          <span class:list={['chip', data.status === 'Live' && 'chip--live']}>{data.status}</span>
           {data.tags.map((t) => <span class="chip">{t}</span>)}
         </div>
         <div class="detail__titlerow">

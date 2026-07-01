@@ -7,11 +7,20 @@ platforms: ["Android", "iOS"]
 tags: ["RPG", "Multiplayer", "Mobile"]
 featured: true
 summary: "Turn-based PvP RPG — I built the PlayFab-backed guild system and battle UI as one engineer on a large team."
-status: "Shipped"
+status: "Delisted"
+cover: "/img/projects/pakapow/banner-1.webp"
+icon: "/img/projects/pakapow/icon.webp"
 hero:
-  type: "image"
+  type: "video"
+  src: "https://www.youtube.com/watch?v=7zfBmVPyoAk"
+gallery:
+  - "/img/projects/pakapow/screenshot-1.webp"
+  - "/img/projects/pakapow/screenshot-2.webp"
+  - "/img/projects/pakapow/screenshot-3.webp"
 tech: ["Unity", "C#", "PlayFab (Groups)", "Firebase", "Unity IAP"]
-links: {}
+links:
+  video: "https://www.youtube.com/watch?v=7zfBmVPyoAk"
+  facebook: "https://web.facebook.com/PakapowGame"
 ---
 
 **Pakapow: Friendship Never Ends** is a Thai mobile turn-based PvP RPG — job classes, worldmap node movement, PvP battles, guilds, and cosmetics. I worked as one gameplay / UI engineer on a large team, with my signature feature being the guild system built directly on PlayFab.
