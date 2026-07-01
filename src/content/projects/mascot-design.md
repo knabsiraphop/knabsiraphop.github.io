@@ -1,10 +1,11 @@
 ---
 title: "Mascot Design"
 order: 10
-role: "Freelance Unity Developer"
+role: "Unity Developer"
+company: "Freelance"
 period: "2021"
 platforms: ["Windows", "macOS"]
-tags: ["Freelance", "Solo", "Tools"]
+tags: ["Freelance", "Solo dev", "Tools"]
 featured: false
 summary: "Standalone Spine mascot creator — a client desktop app with a skin customizer, bone scaling, and high-res PNG / JPG export."
 status: "Delivered"
@@ -20,7 +21,7 @@ links:
   github: "https://github.com/knabsiraphop"
 ---
 
-**Mascot Design** is a standalone Unity **desktop app** (Spine 4.0) delivered for a client — users build and customize a 2D mascot, then export a high-resolution PNG / JPG. Built solo over ~3 months (22 commits on `develop`).
+**Mascot Design** is a standalone Unity **desktop app** (Spine 4.0) delivered for a client — users build and customize a 2D mascot, then export a high-resolution PNG / JPG. I built it as the sole developer over ~3 months (22 commits on `develop`).
 
 ## What I built
 

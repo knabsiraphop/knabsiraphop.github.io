@@ -1,12 +1,13 @@
 ---
 title: "Cat vs Aliens"
 order: 8
-role: "Solo Developer"
+role: "Sole Developer"
+company: "Varisoft"
 period: "2020"
 platforms: ["Android (Huawei)"]
-tags: ["Solo", "Arcade", "Mobile"]
+tags: ["Solo dev", "Arcade", "Mobile"]
 featured: true
-summary: "100% solo top-down arcade defender taken from empty project to a Huawei AppGallery release in about four weeks."
+summary: "Sole developer on a top-down arcade defender — from an empty project to a Huawei AppGallery release in about four weeks."
 status: "Shipped"
 cover: "/img/projects/cat-vs-aliens/icon.webp"
 icon: "/img/projects/cat-vs-aliens/icon.webp"
@@ -20,7 +21,7 @@ tech: ["Unity", "C#", "Huawei HMS", "Ads", "Google Sheets"]
 links: {}
 ---
 
-**Cat vs Aliens** (originally "Cat vs Covid") is a top-down survival / defense arcade game — you control a cat and tap to throw bombs at advancing waves of enemies, defending a barricade across ramping stages, with coins, a skins gacha, and leaderboards. I built **100% of it solo** in a roughly four-week sprint.
+**Cat vs Aliens** (originally "Cat vs Covid") is a top-down survival / defense arcade game — you control a cat and tap to throw bombs at advancing waves of enemies, defending a barricade across ramping stages, with coins, a skins gacha, and leaderboards. I was the **sole developer** — writing all of the game's code in a roughly four-week sprint — working alongside an artist and a game designer.
 
 ## What I built
 

@@ -2,6 +2,7 @@
 title: "Dream Runner X"
 order: 2
 role: "Gameplay & Systems Engineer"
+company: "Varisoft"
 period: "2026 – Present"
 platforms: ["Android", "iOS"]
 tags: ["Live-ops", "Multiplayer", "Mobile"]

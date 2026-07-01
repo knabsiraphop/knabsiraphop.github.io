@@ -2,6 +2,7 @@
 title: "ZabbWorld: Secret Stories"
 order: 1
 role: "Lead Client Engineer"
+company: "Varisoft"
 period: "2020 – Present"
 platforms: ["Android", "iOS"]
 tags: ["MMO", "Multiplayer", "Live-ops", "Mobile"]

@@ -64,6 +64,14 @@ const links = linkDefs.filter((l) => linkMap[l.key]);
 
         <dl class="detail__facts">
           <div><dt>Role</dt><dd>{data.role}</dd></div>
+          {
+            data.company && (
+              <div>
+                <dt>{data.company === 'Freelance' ? 'Engagement' : 'Studio'}</dt>
+                <dd>{data.company}</dd>
+              </div>
+            )
+          }
           <div><dt>Period</dt><dd>{data.period}</dd></div>
           <div><dt>Platforms</dt><dd>{data.platforms.length ? data.platforms.join(', ') : '—'}</dd></div>
         </dl>

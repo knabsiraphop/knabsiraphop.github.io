@@ -4,7 +4,7 @@ export const site = {
   nick: 'Bank',
   role: 'Unity Game Developer',
   tagline:
-    'I build and ship live mobile & WebGL games in Unity / C# — from a 5-year multiplayer MMO to solo titles on Google Play, the App Store, and the web.',
+    'I build and ship live mobile & WebGL games in Unity / C# — from a 5-year multiplayer MMO to standalone titles I shipped as the sole developer on Google Play, the App Store, and the web.',
   location: 'Bangkok, Thailand',
   email: 'siraphop.pu@gmail.com',
   phone: '088-232-1837',
@@ -21,6 +21,7 @@ export const nav = [
   { label: 'Work', href: '/projects/' },
   { label: 'Open Source', href: '/open-source/' },
   { label: 'About', href: '/#about' },
+  { label: 'Experience', href: '/#experience' },
   { label: 'Skills', href: '/#skills' },
   { label: 'Contact', href: '/#contact' },
 ];

@@ -2,6 +2,7 @@
 title: "Knock Knock Run"
 order: 6
 role: "Unity Developer — Launch & Stabilization"
+company: "Varisoft"
 period: "2022"
 platforms: ["Android"]
 tags: ["Multiplayer", "Horror", "Mobile"]

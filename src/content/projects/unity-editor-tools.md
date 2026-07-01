@@ -2,9 +2,10 @@
 title: "Unity Editor Tools"
 order: 9
 role: "Tools Engineer (Solo)"
+company: "Varisoft"
 period: "2022 – 2025"
 platforms: ["Unity Editor"]
-tags: ["Tools", "Solo"]
+tags: ["Tools", "Solo dev"]
 featured: false
 summary: "Standalone Unity editor tools that mirror the MMO's avatar and furniture pipelines for content QA."
 status: "Internal tool"

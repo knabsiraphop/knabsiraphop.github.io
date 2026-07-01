@@ -2,6 +2,7 @@
 title: "Pakapow: Friendship Never Ends"
 order: 5
 role: "Gameplay / UI Engineer"
+company: "Varisoft"
 period: "2020 – 2023"
 platforms: ["Android", "iOS"]
 tags: ["RPG", "Multiplayer", "Mobile"]

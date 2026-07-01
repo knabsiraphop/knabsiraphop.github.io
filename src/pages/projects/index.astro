@@ -5,10 +5,13 @@ import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 
-// Build the unique tag list for the filter bar.
+// Build the filter bar: employer/context (Varisoft, Freelance) first, then genre/type tags.
+const companySet = new Set<string>();
+for (const p of projects) if (p.data.company) companySet.add(p.data.company);
 const tagSet = new Set<string>();
 for (const p of projects) for (const t of p.data.tags) tagSet.add(t);
-const tags = ['All', ...Array.from(tagSet).sort()];
+for (const c of companySet) tagSet.delete(c); // dedupe: "Freelance" is both a company and a tag
+const tags = ['All', ...Array.from(companySet).sort(), ...Array.from(tagSet).sort()];
 ---
 
 <BaseLayout

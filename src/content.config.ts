@@ -9,9 +9,10 @@ const projects = defineCollection({
     title: z.string(),
     order: z.number().default(99), // controls display order (lower = first)
     role: z.string(),
+    company: z.string().default(''), // employer/context: "Varisoft" (studio) | "Freelance"
     period: z.string(), // e.g. "2020 – Present"
     platforms: z.array(z.string()).default([]),
-    tags: z.array(z.string()).default([]), // filter chips: MMO / Solo / WebGL / Live-ops / Tools ...
+    tags: z.array(z.string()).default([]), // filter chips: MMO / Solo dev / WebGL / Live-ops / Tools ...
     featured: z.boolean().default(false), // shown on the home page
     summary: z.string(), // one-line description for cards
     cover: z.string().optional(), // card thumbnail under /img/projects (blank => placeholder)

@@ -1,12 +1,13 @@
 ---
 title: "Rescue Meow Meow"
 order: 4
-role: "Solo Developer"
+role: "Sole Developer"
+company: "Varisoft"
 period: "2020 – 2021"
 platforms: ["WebGL"]
-tags: ["Solo", "WebGL", "Puzzle"]
+tags: ["Solo dev", "WebGL", "Puzzle"]
 featured: true
-summary: "Solo-built physics sprite-cutting puzzle shipped on Thai PBS Kids (WebGL) — started as the 'Wooden Castle' prototype."
+summary: "Sole developer on a physics sprite-cutting puzzle shipped on Thai PBS Kids (WebGL) — started as the 'Wooden Castle' prototype."
 status: "Shipped"
 cover: "/img/projects/meow-meow-rescue/gameplay.webp"
 hero:
@@ -22,7 +23,7 @@ links:
 
 **Rescue Meow Meow** (which began as the prototype "Wooden Castle") is a 2D physics sprite-cutting puzzle game built for **Thai PBS Kids** and embedded as a WebGL build on thaipbskids.com. You slash a line to slice wooden obstacles and drop a target number of cats past a goal line, under a cut limit and a time limit, earning 1–3 stars per stage.
 
-Built **solo** across two repositories (~42 commits, ~6,800 lines authored) over roughly 2.5 months.
+I was the **sole developer** across two repositories (~42 commits, ~6,800 lines authored) over roughly 2.5 months, working alongside an artist and a game designer.
 
 ## What I built
 

@@ -11,7 +11,7 @@ const href = `/projects/${id}/`;
 const isPlayable = data.hero?.type === 'webgl' || Boolean(data.links?.play);
 ---
 
-<a class="card" href={href} data-reveal data-tags={data.tags.join('|')}>
+<a class="card" href={href} data-reveal data-tags={[data.company, ...data.tags].filter(Boolean).join('|')}>
   <div class="card__media">
     {
       data.cover ? (
@@ -38,7 +38,14 @@ const isPlayable = data.hero?.type === 'webgl' || Boolean(data.links?.play);
       <h3 class="card__title">{data.title}</h3>
       <Icon name="arrow" size={18} class="card__arrow" />
     </div>
-    <p class="card__role muted">{data.role} · {data.period}</p>
+    <p class="card__meta">
+      {
+        data.company && (
+          <span class:list={['card__co', { 'card__co--free': data.company === 'Freelance' }]}>{data.company}</span>
+        )
+      }
+      <span class="card__role muted">{data.role} · {data.period}</span>
+    </p>
     <p class="card__summary">{data.summary}</p>
     <div class="card__tags">
       {data.tags.slice(0, 3).map((t) => <span class="chip">{t}</span>)}
@@ -92,6 +99,24 @@ const isPlayable = data.hero?.type === 'webgl' || Boolean(data.links?.play);
   .card__title { font-size: 19px; }
   .card__arrow { color: var(--text-dim); transition: transform 0.2s ease, color 0.2s ease; }
   .card:hover .card__arrow { color: var(--accent); transform: translate(3px, -3px) rotate(-45deg); }
+  .card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .card__co {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 2px 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(77, 163, 255, 0.35);
+    color: var(--accent);
+    background: rgba(77, 163, 255, 0.08);
+    white-space: nowrap;
+  }
+  .card__co--free {
+    border-color: rgba(0, 229, 199, 0.35);
+    color: var(--accent-2);
+    background: rgba(0, 229, 199, 0.08);
+  }
   .card__role { font-size: 13px; }
   .card__summary { font-size: 14.5px; color: #cfd8e2; flex: 1; }
   .card__tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
