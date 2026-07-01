@@ -45,6 +45,6 @@ It is the flagship of the studio and the largest project I've worked on: **21,00
 
 ## Engineering notes
 
-- Sustained architecture investment across five years: an `AvatarSystem → AvatarSystemV2` migration, repeated localization and chat refactors, assembly splits, and Addressables load-time optimization.
+- Sustained architecture investment across five years: authored the original `AvatarSystem` skin-builder (later performance-optimized into `AvatarSystemV2` by a teammate), repeated localization and chat refactors, assembly splits, and Addressables load-time optimization.
 - Introduced a centralized analytics event system threaded across shop, craft, career, mini-games, inventory, avatar, and networking.
 - Built standalone editor tools (avatar editor, furniture grid tool) for the very systems I own — see [Unity Editor Tools](/projects/unity-editor-tools/).
