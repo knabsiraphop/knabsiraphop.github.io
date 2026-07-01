@@ -114,16 +114,17 @@ const strengths = [
         <li><Icon name="external" size={16} /> Open-source Unity packages (UPM)</li>
       </ul>
     </div>
+  </Section>
 
+  <!-- ===== HOW I WORK ===== -->
+  <Section
+    id="how-i-work"
+    eyebrow="How I work"
+    title="Strengths in practice"
+    sub="My top CliftonStrengths® 34 themes — and what each one looks like in the code."
+    class="section--alt"
+  >
     <div class="strengths" data-reveal>
-      <div class="strengths__head">
-        <h3 class="strengths__h">How I work</h3>
-        <p class="strengths__sub">
-          My top themes from
-          <a href="https://www.gallup.com/cliftonstrengths/" target="_blank" rel="noopener">CliftonStrengths&reg;</a>
-          34 — and what each looks like in the code.
-        </p>
-      </div>
       <ul class="strengths__grid">
         {
           strengths.map((s) => (
@@ -137,14 +138,19 @@ const strengths = [
           ))
         }
       </ul>
-      <p class="strengths__lead">
-        <Icon name="code" size={15} /> I lead with the <strong>Executing</strong> domain — I catch an idea and make it real.
-      </p>
+      <div class="strengths__foot">
+        <p class="strengths__lead">
+          <Icon name="code" size={15} /> I lead with the <strong>Executing</strong> domain — I catch an idea and make it real.
+        </p>
+        <a class="strengths__credit" href="https://www.gallup.com/cliftonstrengths/" target="_blank" rel="noopener">
+          Source: Gallup CliftonStrengths <Icon name="external" size={13} />
+        </a>
+      </div>
     </div>
   </Section>
 
   <!-- ===== SKILLS ===== -->
-  <Section id="skills" eyebrow="Toolbox" title="Skills & tech" class="section--alt">
+  <Section id="skills" eyebrow="Toolbox" title="Skills & tech">
     <SkillsGrid />
   </Section>
 
@@ -154,6 +160,7 @@ const strengths = [
     eyebrow="Selected work"
     title="Featured projects"
     sub="A few highlights — some playable right in your browser. See the full list for everything."
+    class="section--alt"
   >
     <div class="cards">
       {featured.map((project) => <ProjectCard project={project} />)}
@@ -164,7 +171,7 @@ const strengths = [
   </Section>
 
   <!-- ===== CONTACT ===== -->
-  <Section id="contact" class="section--alt">
+  <Section id="contact">
     <div class="contact surface" data-reveal>
       <div>
         <p class="eyebrow">Get in touch</p>
@@ -247,11 +254,6 @@ const strengths = [
   .about__highlights :global(.icon) { color: var(--accent-2); }
 
   /* HOW I WORK (strengths) */
-  .strengths { margin-top: clamp(36px, 5vw, 52px); }
-  .strengths__head { margin-bottom: 20px; }
-  .strengths__h { font-family: var(--font-display); font-size: 20px; }
-  .strengths__sub { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
-  .strengths__sub a { color: var(--accent); }
   .strengths__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
   .strength { padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); transition: border-color 0.18s ease, transform 0.18s ease; }
   .strength:hover { border-color: rgba(77, 163, 255, 0.5); transform: translateY(-2px); }
@@ -259,9 +261,12 @@ const strengths = [
   .strength__name { font-family: var(--font-display); font-weight: 700; font-size: 16px; }
   .strength__domain { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2); white-space: nowrap; }
   .strength__note { color: #cfd8e2; font-size: 14px; line-height: 1.5; }
-  .strengths__lead { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--text-dim); font-size: 14.5px; border-left: 2px solid var(--accent); padding-left: 12px; }
+  .strengths__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-top: 20px; }
+  .strengths__lead { display: inline-flex; align-items: center; gap: 8px; color: var(--text-dim); font-size: 14.5px; border-left: 2px solid var(--accent); padding-left: 12px; }
   .strengths__lead :global(.icon) { color: var(--accent); }
   .strengths__lead strong { color: var(--text); }
+  .strengths__credit { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); font-size: 12.5px; transition: color 0.15s ease; }
+  .strengths__credit:hover { color: var(--accent); }
 
   /* shared section bg */
   :global(.section--alt) { background: rgba(255, 255, 255, 0.014); border-block: 1px solid var(--border); }
