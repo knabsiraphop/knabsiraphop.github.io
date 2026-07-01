@@ -15,6 +15,35 @@ const stats = [
   { value: '10+', label: 'Titles across mobile & WebGL' },
   { value: '8,400+', label: 'Commits on the flagship MMO (#1 contributor)' },
 ];
+
+// Top CliftonStrengths themes, framed as they show up in my engineering work.
+const strengths = [
+  {
+    name: 'Context',
+    domain: 'Strategic Thinking',
+    note: "I read a system by its history — how it got here and why. On a five-year MMO codebase, that's the line between a safe change and a regression.",
+  },
+  {
+    name: 'Deliberative',
+    domain: 'Executing',
+    note: "I anticipate risks and edge cases before they ship. Cautious by default — it's why my stability and live-ops work holds up.",
+  },
+  {
+    name: 'Maximizer',
+    domain: 'Influencing',
+    note: "I don't settle for “good enough.” I keep asking how to make a system better — the refactors and optimization passes.",
+  },
+  {
+    name: 'Consistency',
+    domain: 'Executing',
+    note: 'I build fair, predictable systems and conventions, so a team always knows what to expect from the code.',
+  },
+  {
+    name: 'Harmony',
+    domain: 'Relationship Building',
+    note: 'I reduce friction and steer toward practical common ground instead of ego debates.',
+  },
+];
 ---
 
 <BaseLayout>
@@ -84,6 +113,33 @@ const stats = [
         <li><Icon name="code" size={18} /> Live-ops, IAP, gacha & economy systems</li>
         <li><Icon name="external" size={16} /> Open-source Unity packages (UPM)</li>
       </ul>
+    </div>
+
+    <div class="strengths" data-reveal>
+      <div class="strengths__head">
+        <h3 class="strengths__h">How I work</h3>
+        <p class="strengths__sub">
+          My top themes from
+          <a href="https://www.gallup.com/cliftonstrengths/" target="_blank" rel="noopener">CliftonStrengths&reg;</a>
+          34 — and what each looks like in the code.
+        </p>
+      </div>
+      <ul class="strengths__grid">
+        {
+          strengths.map((s) => (
+            <li class="strength">
+              <div class="strength__top">
+                <span class="strength__name">{s.name}</span>
+                <span class="strength__domain">{s.domain}</span>
+              </div>
+              <p class="strength__note">{s.note}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="strengths__lead">
+        <Icon name="code" size={15} /> I lead with the <strong>Executing</strong> domain — I catch an idea and make it real.
+      </p>
     </div>
   </Section>
 
@@ -189,6 +245,23 @@ const stats = [
   .about__highlights { display: grid; gap: 12px; }
   .about__highlights li { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); font-family: var(--font-display); font-size: 15px; font-weight: 500; }
   .about__highlights :global(.icon) { color: var(--accent-2); }
+
+  /* HOW I WORK (strengths) */
+  .strengths { margin-top: clamp(36px, 5vw, 52px); }
+  .strengths__head { margin-bottom: 20px; }
+  .strengths__h { font-family: var(--font-display); font-size: 20px; }
+  .strengths__sub { color: var(--text-dim); font-size: 15px; margin-top: 6px; }
+  .strengths__sub a { color: var(--accent); }
+  .strengths__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .strength { padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); transition: border-color 0.18s ease, transform 0.18s ease; }
+  .strength:hover { border-color: rgba(77, 163, 255, 0.5); transform: translateY(-2px); }
+  .strength__top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .strength__name { font-family: var(--font-display); font-weight: 700; font-size: 16px; }
+  .strength__domain { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2); white-space: nowrap; }
+  .strength__note { color: #cfd8e2; font-size: 14px; line-height: 1.5; }
+  .strengths__lead { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--text-dim); font-size: 14.5px; border-left: 2px solid var(--accent); padding-left: 12px; }
+  .strengths__lead :global(.icon) { color: var(--accent); }
+  .strengths__lead strong { color: var(--text); }
 
   /* shared section bg */
   :global(.section--alt) { background: rgba(255, 255, 255, 0.014); border-block: 1px solid var(--border); }
