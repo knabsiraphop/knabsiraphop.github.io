@@ -5,7 +5,7 @@ role: "Unity Developer"
 company: "Freelance"
 period: "2021"
 platforms: ["Unity"]
-tags: ["Freelance", "Solo dev", "Tools"]
+tags: ["Freelance", "Sole programmer", "Tools"]
 featured: false
 summary: "Runtime Spine avatar-customization system — non-destructive skin-swapping with skin-tone and hair-color tinting, fully data-driven."
 status: "Delivered"

@@ -5,7 +5,7 @@ role: "Unity Developer"
 company: "Freelance"
 period: "2021 – 2022"
 platforms: ["Mobile"]
-tags: ["Freelance", "Solo dev", "Simulation"]
+tags: ["Freelance", "Sole programmer", "Simulation"]
 featured: false
 summary: "Solar-farm yield simulation prototype — a compressed day / night cycle, weather events, and an in-game economy on a message-bus architecture."
 status: "Delivered"
@@ -22,7 +22,7 @@ links:
   github: "https://github.com/knabsiraphop"
 ---
 
-**SolarYield** is a single-scene mobile game prototype delivered for a client — the player runs a solar-panel farm, generating electricity across a compressed day cycle and trading in **SOLA coin**, the in-game currency. I built it as the sole developer over ~7 weeks.
+**SolarYield** is a single-scene mobile game prototype delivered for a client — the player runs a solar-panel farm, generating electricity across a compressed day cycle and trading in **SOLA coin**, the in-game currency. I built it as the sole programmer over ~7 weeks.
 
 ## What I built
 

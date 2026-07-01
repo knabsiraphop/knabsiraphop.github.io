@@ -1,13 +1,13 @@
 ---
 title: "Once Pro Shoot"
 order: 3
-role: "Sole Developer"
+role: "Sole Programmer"
 company: "Varisoft"
 period: "2021"
 platforms: ["WebGL"]
-tags: ["Solo dev", "WebGL", "Arcade"]
+tags: ["Sole programmer", "WebGL", "Arcade"]
 featured: true
-summary: "Sole developer on a WebGL arcade shoot-'em-up with a data-driven balancing pipeline and an online leaderboard."
+summary: "Sole programmer on a WebGL arcade shoot-'em-up with a data-driven balancing pipeline and an online leaderboard."
 status: "Shipped"
 cover: "/img/projects/once-pro-shoot/gameplay.webp"
 hero:
@@ -21,7 +21,7 @@ links: {}
 
 **Once Pro Shoot** is a 2D vertical shoot-'em-up with a candy / dessert theme, built for mobile-web (WebGL). You drag to move a princess at the bottom of the screen and tap or hold to fire upward at descending dessert enemies and bosses; collecting power-ups triggers a temporary power mode, and game-over posts your score to an online leaderboard.
 
-I was the **sole developer** — every line of the game's code across all branches (~4,900 lines authored) — working alongside an artist and a game designer.
+I was the **sole programmer** — every line of the game's code across all branches (~4,900 lines authored) — working alongside an artist and a game designer.
 
 ## What I built
 
