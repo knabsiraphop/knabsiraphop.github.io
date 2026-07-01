@@ -1,6 +1,6 @@
 ---
 title: "Cat vs Aliens"
-order: 7
+order: 8
 role: "Solo Developer"
 period: "2020"
 platforms: ["Android (Huawei)"]
@@ -8,8 +8,14 @@ tags: ["Solo", "Arcade", "Mobile"]
 featured: true
 summary: "100% solo top-down arcade defender taken from empty project to a Huawei AppGallery release in about four weeks."
 status: "Shipped"
+cover: "/img/projects/cat-vs-aliens/icon.webp"
+icon: "/img/projects/cat-vs-aliens/icon.webp"
 hero:
   type: "image"
+  src: "/img/projects/cat-vs-aliens/title.webp"
+gallery:
+  - "/img/projects/cat-vs-aliens/gameplay.webp"
+  - "/img/projects/cat-vs-aliens/skins.webp"
 tech: ["Unity", "C#", "Huawei HMS", "Ads", "Google Sheets"]
 links: {}
 ---

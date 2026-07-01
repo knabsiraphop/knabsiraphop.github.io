@@ -8,8 +8,12 @@ tags: ["Solo", "WebGL", "Arcade"]
 featured: true
 summary: "Solo-built WebGL arcade shoot-'em-up with a data-driven balancing pipeline and an online leaderboard."
 status: "Shipped"
+cover: "/img/projects/once-pro-shoot/gameplay.webp"
 hero:
-  type: "webgl"
+  type: "image"
+  src: "/img/projects/once-pro-shoot/start.webp"
+gallery:
+  - "/img/projects/once-pro-shoot/gameplay.webp"
 tech: ["Unity", "C#", "WebGL", "Firebase", "UniTask", "Spine", "Google Sheets API"]
 links: {}
 ---
