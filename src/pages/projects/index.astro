@@ -36,7 +36,7 @@ const tags = ['All', ...Array.from(tagSet).sort()];
         }
       </div>
 
-      <div class="cards" data-cards>
+      <div class="cards" data-cards data-reveal-group>
         {projects.map((project) => <ProjectCard project={project} />)}
       </div>
       <p class="cards__empty muted" data-empty hidden>No projects match that filter.</p>

@@ -74,7 +74,7 @@ const strengths = [
     </div>
 
     <div class="container">
-      <div class="hero__stats" data-reveal>
+      <div class="hero__stats" data-reveal-group>
         {
           stats.map((s) => (
             <div class="stat">
@@ -107,7 +107,7 @@ const strengths = [
           without AI, just slower.
         </p>
       </div>
-      <ul class="about__highlights" data-reveal>
+      <ul class="about__highlights" data-reveal-group>
         <li><Icon name="gamepad" size={18} /> Lead engineer on a 5-year social MMO</li>
         <li><Icon name="play" size={16} /> Solo-shipped titles on mobile & WebGL</li>
         <li><Icon name="code" size={18} /> Live-ops, IAP, gacha & economy systems</li>
@@ -125,7 +125,7 @@ const strengths = [
     class="section--alt"
   >
     <div class="strengths" data-reveal>
-      <ul class="strengths__grid">
+      <ul class="strengths__grid" data-reveal-group>
         {
           strengths.map((s) => (
             <li class="strength">
@@ -162,7 +162,7 @@ const strengths = [
     sub="A few highlights — some playable right in your browser. See the full list for everything."
     class="section--alt"
   >
-    <div class="cards">
+    <div class="cards" data-reveal-group>
       {featured.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="work__more" data-reveal>
@@ -198,7 +198,14 @@ const strengths = [
   }
   .hero__loc { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); font-size: 14px; margin-bottom: 18px; }
   .hero__title { font-size: clamp(40px, 7vw, 72px); line-height: 0.98; letter-spacing: -0.02em; }
-  .hero__title span { background: linear-gradient(120deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero__title span {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2), var(--accent));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-pan 6s linear infinite;
+  }
   .hero__role { font-family: var(--font-display); font-size: clamp(16px, 2.2vw, 20px); font-weight: 600; color: var(--text); margin-top: 16px; }
   .hero__role span { color: var(--text-dim); font-weight: 500; }
   .hero__tagline { color: var(--text-dim); font-size: 17px; margin-top: 14px; max-width: 56ch; }
@@ -220,6 +227,7 @@ const strengths = [
     z-index: 1;
   }
   .hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero__media { animation: float-y 7s ease-in-out infinite; }
   .hero__ring {
     position: absolute;
     inset: -14px;
@@ -228,6 +236,7 @@ const strengths = [
     filter: blur(26px);
     opacity: 0.5;
     z-index: 0;
+    animation: glow-pulse 5s ease-in-out infinite;
   }
 
   .hero__stats {
@@ -290,3 +299,41 @@ const strengths = [
     .hero__title { font-size: clamp(36px, 12vw, 52px); }
   }
 </style>
+
+<script>
+  // Count-up the hero stats when they scroll into view (respects reduced motion).
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stats = document.querySelectorAll<HTMLElement>('.stat__value');
+  if (!reduce && 'IntersectionObserver' in window && stats.length) {
+    const fmt = (n: number) => n.toLocaleString('en-US');
+    const run = (el: HTMLElement) => {
+      const raw = (el.textContent || '').trim();
+      const m = raw.match(/([\d,]+)/);
+      if (!m) return;
+      const target = parseInt(m[1].replace(/,/g, ''), 10);
+      const prefix = raw.slice(0, m.index);
+      const suffix = raw.slice((m.index || 0) + m[1].length);
+      const dur = 1400;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + fmt(Math.round(target * eased)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            run(e.target as HTMLElement);
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.5 }
+    );
+    stats.forEach((s) => io.observe(s));
+  }
+</script>

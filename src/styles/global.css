@@ -201,9 +201,39 @@ html.js [data-reveal] {
 }
 html.js [data-reveal].is-in { opacity: 1; transform: none; }
 
+/* Staggered reveal for a group of sibling children (grids, lists) */
+html.js [data-reveal-group] > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+html.js [data-reveal-group].is-in > * { opacity: 1; transform: none; }
+html.js [data-reveal-group].is-in > *:nth-child(1) { transition-delay: 0.02s; }
+html.js [data-reveal-group].is-in > *:nth-child(2) { transition-delay: 0.09s; }
+html.js [data-reveal-group].is-in > *:nth-child(3) { transition-delay: 0.16s; }
+html.js [data-reveal-group].is-in > *:nth-child(4) { transition-delay: 0.23s; }
+html.js [data-reveal-group].is-in > *:nth-child(5) { transition-delay: 0.30s; }
+html.js [data-reveal-group].is-in > *:nth-child(6) { transition-delay: 0.37s; }
+html.js [data-reveal-group].is-in > *:nth-child(7) { transition-delay: 0.44s; }
+html.js [data-reveal-group].is-in > *:nth-child(n + 8) { transition-delay: 0.5s; }
+
+/* ---------- Motion keyframes (used by hero + accents) ---------- */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.42; transform: scale(1); }
+  50% { opacity: 0.68; transform: scale(1.06); }
+}
+@keyframes gradient-pan {
+  to { background-position: 200% center; }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   html.js [data-reveal] { opacity: 1; transform: none; }
+  html.js [data-reveal-group] > * { opacity: 1; transform: none; }
 }

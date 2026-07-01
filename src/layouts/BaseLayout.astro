@@ -68,7 +68,7 @@ const ogImage = new URL(image, Astro.site);
 
     <script>
       // Reveal-on-scroll (progressive enhancement; gated behind html.js in CSS)
-      const els = document.querySelectorAll('[data-reveal]');
+      const els = document.querySelectorAll('[data-reveal], [data-reveal-group]');
       if ('IntersectionObserver' in window && els.length) {
         const io = new IntersectionObserver(
           (entries) => {

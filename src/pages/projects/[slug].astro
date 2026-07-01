@@ -89,7 +89,7 @@ const links = linkDefs.filter((l) => linkMap[l.key]);
             (yt ? (
               <div class="video">
                 <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${yt}`}
+                  src={`https://www.youtube-nocookie.com/embed/${yt}?autoplay=1&mute=1&loop=1&playlist=${yt}&controls=1&rel=0&modestbranding=1&playsinline=1`}
                   title={`${data.title} trailer`}
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -123,7 +123,7 @@ const links = linkDefs.filter((l) => linkMap[l.key]);
         data.gallery.length > 0 && (
           <section class="gallery" data-reveal>
             <h2 class="gallery__h">Gallery</h2>
-            <div class="gallery__grid">
+            <div class="gallery__grid" data-reveal-group>
               {data.gallery.map((src, i) => (
                 <a class="gallery__item" href={src} target="_blank" rel="noopener" aria-label={`Open screenshot ${i + 1}`}>
                   <img src={src} alt={`${data.title} screenshot ${i + 1}`} loading="lazy" width="640" height="360" />
