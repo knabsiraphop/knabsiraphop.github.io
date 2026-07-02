@@ -18,6 +18,8 @@ gallery:
   - "/img/projects/pakapow/screenshot-1.webp"
   - "/img/projects/pakapow/screenshot-2.webp"
   - "/img/projects/pakapow/screenshot-3.webp"
+  - "/img/projects/pakapow/screenshot-4.webp"
+  - "/img/projects/pakapow/screenshot-5.webp"
 tech: ["Unity", "C#", "PlayFab (Groups)", "Firebase", "Unity IAP"]
 links:
   video: "https://www.youtube.com/watch?v=7zfBmVPyoAk"

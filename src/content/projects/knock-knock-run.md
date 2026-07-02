@@ -18,6 +18,14 @@ gallery:
   - "/img/projects/knock-knock-run/screenshot-1.webp"
   - "/img/projects/knock-knock-run/screenshot-2.webp"
   - "/img/projects/knock-knock-run/screenshot-3.webp"
+  - "/img/projects/knock-knock-run/screenshot-4.webp"
+  - "/img/projects/knock-knock-run/screenshot-5.webp"
+  - "/img/projects/knock-knock-run/screenshot-6.webp"
+  - "/img/projects/knock-knock-run/screenshot-7.webp"
+  - "/img/projects/knock-knock-run/screenshot-8.webp"
+  - "/img/projects/knock-knock-run/screenshot-9.webp"
+  - "/img/projects/knock-knock-run/screenshot-10.webp"
+  - "/img/projects/knock-knock-run/screenshot-11.webp"
 tech: ["Unity 2019", "C#", "Nakama", "Firebase"]
 links:
   facebook: "https://web.facebook.com/KnockKnockRun"

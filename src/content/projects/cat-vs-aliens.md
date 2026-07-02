@@ -17,6 +17,8 @@ hero:
 gallery:
   - "/img/projects/cat-vs-aliens/gameplay.webp"
   - "/img/projects/cat-vs-aliens/skins.webp"
+  - "/img/projects/cat-vs-aliens/skin-select.webp"
+  - "/img/projects/cat-vs-aliens/stage-clear.webp"
 tech: ["Unity", "C#", "Huawei HMS", "Ads", "Google Sheets"]
 links: {}
 ---

@@ -15,6 +15,11 @@ hero:
   src: "/img/projects/meow-meow-rescue/promo.webp"
 gallery:
   - "/img/projects/meow-meow-rescue/gameplay.webp"
+  - "/img/projects/meow-meow-rescue/title.webp"
+  - "/img/projects/meow-meow-rescue/gameplay-2.webp"
+  - "/img/projects/meow-meow-rescue/gameplay-3.webp"
+  - "/img/projects/meow-meow-rescue/gameplay-4.webp"
+  - "/img/projects/meow-meow-rescue/gameplay-5.webp"
 tech: ["Unity", "C#", "WebGL", "Firebase Auth + Cloud Functions", "UniTask", "Spine", "Smart Slicer 2D Pro"]
 links:
   play: "https://knabsiraphop.itch.io/rescue-meowmeow-portfolio-demo"
