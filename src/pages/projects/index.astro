@@ -71,19 +71,19 @@ const tags = ['All', ...Array.from(companySet).sort(), ...Array.from(tagSet).sor
 <style>
   .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
   .filter {
-    font-family: var(--font-display);
-    font-size: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
     font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 999px;
+    padding: 8px 14px;
+    border-radius: var(--radius);
     border: 1px solid var(--border);
     background: var(--surface);
     color: var(--text-dim);
     cursor: pointer;
     transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   }
-  .filter:hover { color: var(--text); border-color: var(--accent); }
-  .filter.is-active { color: var(--accent-ink); background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; }
+  .filter:hover { color: var(--accent); border-color: var(--accent); }
+  .filter.is-active { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
 
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
   .cards__empty { margin-top: 28px; text-align: center; }

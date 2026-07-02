@@ -66,7 +66,7 @@ const isPlayable = data.hero?.type === 'webgl' || Boolean(data.links?.play);
   }
   .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(77, 163, 255, 0.5);
+    border-color: var(--accent);
     box-shadow: var(--shadow);
   }
   .card__media {
@@ -85,14 +85,14 @@ const isPlayable = data.hero?.type === 'webgl' || Boolean(data.links?.play);
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     padding: 5px 10px;
-    border-radius: 999px;
+    border-radius: var(--radius);
     color: var(--accent-ink);
     background: var(--accent-2);
-    box-shadow: 0 4px 14px -4px rgba(0, 229, 199, 0.6);
+    box-shadow: 0 4px 16px -6px rgba(156, 123, 214, 0.7);
   }
   .card__body { padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .card__top { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
@@ -101,23 +101,23 @@ const isPlayable = data.hero?.type === 'webgl' || Boolean(data.links?.play);
   .card:hover .card__arrow { color: var(--accent); transform: translate(3px, -3px) rotate(-45deg); }
   .card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
   .card__co {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.01em;
-    padding: 2px 9px;
-    border-radius: 999px;
-    border: 1px solid rgba(77, 163, 255, 0.35);
-    color: var(--accent);
-    background: rgba(77, 163, 255, 0.08);
+    padding: 2px 8px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(212, 162, 76, 0.35);
+    color: var(--accent-soft);
+    background: rgba(212, 162, 76, 0.08);
     white-space: nowrap;
   }
   .card__co--free {
-    border-color: rgba(0, 229, 199, 0.35);
+    border-color: rgba(156, 123, 214, 0.4);
     color: var(--accent-2);
-    background: rgba(0, 229, 199, 0.08);
+    background: rgba(156, 123, 214, 0.1);
   }
   .card__role { font-size: 13px; }
-  .card__summary { font-size: 14.5px; color: #cfd8e2; flex: 1; }
+  .card__summary { font-size: 14.5px; color: var(--prose); flex: 1; }
   .card__tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
 </style>

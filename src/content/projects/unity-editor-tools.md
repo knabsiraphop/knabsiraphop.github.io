@@ -1,5 +1,5 @@
 ---
-title: "Unity Editor Tools"
+title: "ZabbWorld Editor Tools"
 order: 9
 role: "Tools Engineer (Solo)"
 company: "Varisoft"
@@ -9,8 +9,13 @@ tags: ["Tools", "Sole programmer"]
 featured: false
 summary: "Standalone Unity editor tools that mirror the MMO's avatar and furniture pipelines for content QA."
 status: "Internal tool"
+cover: "/img/projects/unity-editor-tools/cover.webp"
 hero:
   type: "image"
+  src: "/img/projects/unity-editor-tools/avatar-costume.webp"
+gallery:
+  - "/img/projects/unity-editor-tools/avatar-animation.webp"
+  - "/img/projects/unity-editor-tools/furniture-tool.webp"
 tech: ["Unity Editor", "C#", "Spine", "UniTask", "Object Pooling"]
 links: {}
 ---
@@ -19,7 +24,7 @@ Two standalone Unity tools I built to support [ZabbWorld](/projects/zabbworld/)'
 
 ## MwAvatarEditor
 
-A long-lived editor / QA tool (~5,000 lines authored) that runs the *real* avatar rendering pipeline against loose part files. Drop part PNGs in a folder, cycle parts per body slot, recolor, apply patterns, play any skeleton animation or face emotion, attach action props, and rotate the character front / back.
+A long-lived editor / QA tool (~5,000 lines authored) that lets 2D artists check their own costume and appearance art against the *real* avatar rendering pipeline. Drop part PNGs in a folder, cycle costume and appearance parts per body slot, tint appearance and skin colors, apply patterns, play any skeleton animation or face emotion, attach action props, and rotate the character front / back.
 
 - Spine skin compositing via attachment remapping; CPU pixel compositing for recolor and pattern (multiply blend).
 - Loads user-supplied parts straight from disk — no reimport needed.
@@ -27,7 +32,7 @@ A long-lived editor / QA tool (~5,000 lines authored) that runs the *real* avata
 
 ## FurnitureTestTool
 
-A focused grid-placement harness for the housing system — load a furniture model, give it an L/W/H footprint (a blocking volume), drop it on a tile grid, rotate it, and validate occupancy, with a follow / zoom camera.
+A focused grid-placement harness for the housing system, built so new 3D artists can size their models correctly before handing them to Unity. Load a furniture model, set its L/W/H footprint (the blocking volume) on an isometric tile grid, rotate it, and confirm it occupies the tiles the design expects — no engineer or full game build required.
 
 ## Engineering notes
 

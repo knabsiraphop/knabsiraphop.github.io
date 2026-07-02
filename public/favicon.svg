@@ -1,11 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SP">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Siraphop Puriwattanakul">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4DA3FF"/>
-      <stop offset="1" stop-color="#00E5C7"/>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7C57E"/>
+      <stop offset="1" stop-color="#D4A24C"/>
     </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.44" r="0.55">
+      <stop offset="0" stop-color="#9C7BD6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#9C7BD6" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#0B0E14"/>
-  <rect x="3" y="3" width="58" height="58" rx="12" fill="none" stroke="url(#g)" stroke-width="2"/>
-  <path d="M25 19 L47 32 L25 45 Z" fill="url(#g)"/>
+  <rect width="64" height="64" rx="14" fill="#0C0A15"/>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="12" fill="none" stroke="#3A3152" stroke-width="1.5"/>
+  <circle cx="32" cy="30" r="20" fill="url(#glow)"/>
+  <!-- signature four-point star (the site's arcane star motif) -->
+  <path d="M32 8 Q35 29 56 32 Q35 35 32 56 Q29 35 8 32 Q29 29 32 8 Z" fill="url(#gold)"/>
+  <!-- small violet companion spark -->
+  <path d="M49 15 Q50 21 56 22 Q50 23 49 29 Q48 23 42 22 Q48 21 49 15 Z" fill="#9C7BD6"/>
 </svg>

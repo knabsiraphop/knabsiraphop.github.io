@@ -9,8 +9,15 @@ tags: ["Live-ops", "Multiplayer", "Mobile"]
 featured: true
 summary: "Owner of core live-ops systems — mail, shop + IAP, gachapon, and daily rewards — on a new multiplayer running game."
 status: "In development"
+cover: "/img/projects/dream-runner-x/banner.webp"
+icon: "/img/projects/dream-runner-x/icon.webp"
 hero:
   type: "image"
+  src: "/img/projects/dream-runner-x/banner.webp"
+gallery:
+  - "/img/projects/dream-runner-x/banner-2.webp"
+  - "/img/projects/dream-runner-x/banner-3.webp"
+  - "/img/projects/dream-runner-x/banner-4.webp"
 tech: ["Unity", "C#", "Firebase", "Unity IAP (UGS 5.x)", "Addressables", "Google Sheets"]
 links: {}
 ---
