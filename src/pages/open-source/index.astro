@@ -172,16 +172,16 @@ const categories = ['All', ...Array.from(catSet).sort()];
     font-family: var(--font-display);
     font-size: 14px;
     font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 999px;
+    padding: 8px 14px;
+    border-radius: var(--radius);
     border: 1px solid var(--border);
     background: var(--surface);
     color: var(--text-dim);
     cursor: pointer;
     transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   }
-  .filter:hover { color: var(--text); border-color: var(--accent); }
-  .filter.is-active { color: var(--accent-ink); background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; }
+  .filter:hover { color: var(--accent); border-color: var(--accent); }
+  .filter.is-active { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
 
   .pkgs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
   .pkgs__empty { margin-top: 28px; text-align: center; }
@@ -196,20 +196,20 @@ const categories = ['All', ...Array.from(catSet).sort()];
     padding: 20px;
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .pkg:hover { transform: translateY(-3px); border-color: rgba(77, 163, 255, 0.5); box-shadow: var(--shadow); }
+  .pkg:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: var(--shadow); }
   .pkg__top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
   .pkg__name { font-size: 17px; line-height: 1.25; }
   .pkg__ver { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--accent-2); flex: none; }
   .pkg__ver--soon { color: var(--text-dim); }
-  .pkg__desc { font-size: 14px; color: #cfd8e2; line-height: 1.55; flex: 1; }
+  .pkg__desc { font-size: 14px; color: #3a352d; line-height: 1.55; flex: 1; }
   .pkg__tags { display: flex; flex-wrap: wrap; gap: 7px; }
   .pkg__upm {
     font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     font-size: 12px;
     color: var(--text-dim);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface-2);
     border: 1px solid var(--border);
-    border-radius: 7px;
+    border-radius: var(--radius);
     padding: 7px 10px;
     overflow-x: auto;
     white-space: nowrap;

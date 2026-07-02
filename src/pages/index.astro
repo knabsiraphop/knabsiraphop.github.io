@@ -10,10 +10,15 @@ import { getCollection } from 'astro:content';
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const featured = projects.filter((p) => p.data.featured);
 
-const stats = [
-  { value: '6+', label: 'Years building & shipping Unity games' },
-  { value: '10+', label: 'Titles across mobile & WebGL' },
-  { value: '8,400+', label: 'Commits on the flagship MMO (#1 contributor)' },
+// `git shortlog -sn` of the real work — commit counts from the WorkSummary evidence.
+// Bar widths are perceptually scaled so smaller projects stay visible; the numbers are exact.
+const shortlog = [
+  { commits: '8,379', name: 'ZabbWorld: Secret Stories', note: 'MMO · #1 contributor', bar: 100 },
+  { commits: '832', name: 'Dream Runner X', note: 'live-ops systems', bar: 47 },
+  { commits: '73', name: 'Pakapow', note: 'guild system · live-ops', bar: 25 },
+  { commits: '43', name: 'Cat vs Aliens', note: 'sole programmer', bar: 23 },
+  { commits: '42', name: 'Fishing Town', note: 'sole programmer', bar: 22 },
+  { commits: '12', name: 'Once Pro Shoot', note: 'sole programmer', bar: 18 },
 ];
 
 // Top CliftonStrengths themes, framed as they show up in my engineering work.
@@ -44,38 +49,6 @@ const strengths = [
     note: 'I reduce friction and steer toward practical common ground instead of ego debates.',
   },
 ];
-
-// Career path — where I've worked and what I shipped there.
-const experience = [
-  {
-    company: 'Varisoft',
-    role: 'Unity Game Developer',
-    period: '2020 – Present',
-    location: 'Bangkok, Thailand',
-    current: true,
-    blurb:
-      "Joined as a Unity developer and grew into the lead client engineer on the studio's flagship MMO — while shipping several smaller titles end-to-end as the sole programmer.",
-    points: [
-      'Lead client engineer on ZabbWorld: Secret Stories — #1 contributor with 8,400+ commits across 5+ years.',
-      'Sole programmer on shipped titles: Cat vs Aliens (Google Play + Huawei AppGallery), plus Once Pro Shoot and Rescue Meow Meow on WebGL.',
-      'Now own core live-ops systems — mail, shop + IAP, gachapon, daily rewards — on Dream Runner X.',
-      'Shipped against three backends: Nakama (real-time multiplayer), PlayFab, and Firebase.',
-    ],
-  },
-  {
-    company: 'Freelance',
-    role: 'Unity Developer',
-    period: '2021 – 2022',
-    location: 'Remote',
-    current: false,
-    blurb: 'Delivered standalone Unity tools and a game prototype for external clients, alongside my studio work.',
-    points: [
-      'Mascot Design — a Spine 2D mascot-creator desktop app with high-resolution export.',
-      'AvatarCustom — a runtime Spine avatar-customization system.',
-      'SolarYield — a solar-farm simulation game prototype.',
-    ],
-  },
-];
 ---
 
 <BaseLayout>
@@ -83,44 +56,66 @@ const experience = [
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__text" data-reveal>
-        <p class="hero__loc"><Icon name="pin" size={15} /> {site.location}</p>
-        <h1 class="hero__title">Siraphop<br /><span>Puriwattanakul</span></h1>
-        <p class="hero__role">{site.role} <span>· "{site.nick}"</span></p>
+        <p class="hero__meta">senior unity engineer · {site.location.toLowerCase()}</p>
+        <h1 class="hero__title">Siraphop<br />Puriwattanakul<span class="caret" aria-hidden="true"></span></h1>
+        <p class="hero__role">"{site.nick}" — {site.role}</p>
         <p class="hero__tagline">{site.tagline}</p>
         <div class="hero__cta">
-          <a class="btn btn--primary" href="/projects/"><Icon name="gamepad" size={18} /> View my work</a>
-          <a class="btn" href={site.resume} target="_blank" rel="noopener"><Icon name="download" size={16} /> Resume</a>
+          <a class="btn btn--primary" href="/projects/"><Icon name="gamepad" size={17} /> View the work</a>
+          <a class="btn" href={site.resume} target="_blank" rel="noopener"><Icon name="download" size={15} /> Resume</a>
         </div>
         <div class="hero__socials">
-          <a href={`mailto:${site.email}`} aria-label="Email"><Icon name="mail" size={20} /></a>
-          <a href={site.socials.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={20} /></a>
-          <a href={site.socials.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" size={20} /></a>
+          <a href={`mailto:${site.email}`} aria-label="Email"><Icon name="mail" size={19} /></a>
+          <a href={site.socials.github} target="_blank" rel="noopener" aria-label="GitHub"><Icon name="github" size={19} /></a>
+          <a href={site.socials.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Icon name="linkedin" size={19} /></a>
         </div>
       </div>
-      <div class="hero__media" data-reveal>
-        <div class="hero__photo">
+
+      <figure class="idcard" data-reveal>
+        <div class="idcard__photo">
           <img src="/img/headshot.jpg" alt="Siraphop Puriwattanakul" width="526" height="720" loading="eager" />
         </div>
-        <span class="hero__ring" aria-hidden="true"></span>
-      </div>
+        <figcaption class="idcard__cap">
+          <span class="idcard__k">author</span>
+          <span class="idcard__v">Siraphop “Bank” P.</span>
+          <span class="idcard__k">since</span>
+          <span class="idcard__v">2020 · Bangkok, TH</span>
+        </figcaption>
+      </figure>
     </div>
 
+    <!-- SIGNATURE: git shortlog of the real work -->
     <div class="container">
-      <div class="hero__stats" data-reveal-group>
-        {
-          stats.map((s) => (
-            <div class="stat">
-              <span class="stat__value">{s.value}</span>
-              <span class="stat__label">{s.label}</span>
-            </div>
-          ))
-        }
+      <div class="shortlog" data-reveal>
+        <div class="shortlog__bar">
+          <span class="shortlog__dot"></span>
+          <span class="shortlog__dot"></span>
+          <span class="shortlog__dot"></span>
+          <span class="shortlog__cmd">git shortlog -sn --all</span>
+        </div>
+        <ul class="shortlog__body" data-reveal-group>
+          {
+            shortlog.map((row) => (
+              <li class="log">
+                <span class="log__n">{row.commits}</span>
+                <span class="log__meter"><span class="log__fill" style={`width:${row.bar}%`} /></span>
+                <span class="log__name">{row.name}</span>
+                <span class="log__note">{row.note}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="shortlog__foot">
+          <span><strong>10+</strong> titles shipped</span>
+          <span><strong>6</strong> years in production</span>
+          <span><strong>3</strong> backends: Nakama · PlayFab · Firebase</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===== ABOUT ===== -->
-  <Section id="about" eyebrow="About" title="Senior Unity developer who ships">
+  <Section id="about" eyebrow="about" title="Senior Unity developer who ships">
     <div class="about">
       <div class="about__text" data-reveal>
         <p>
@@ -143,64 +138,108 @@ const experience = [
         </p>
       </div>
       <ul class="about__highlights" data-reveal-group>
-        <li><Icon name="gamepad" size={18} /> Lead engineer on a 5-year social MMO</li>
-        <li><Icon name="play" size={16} /> Sole programmer on shipped mobile & WebGL titles</li>
-        <li><Icon name="code" size={18} /> Live-ops, IAP, gacha & economy systems</li>
-        <li><Icon name="external" size={16} /> Open-source Unity packages (UPM)</li>
+        <li><Icon name="gamepad" size={17} /> Lead engineer on a 5-year social MMO</li>
+        <li><Icon name="play" size={15} /> Sole programmer on shipped mobile & WebGL titles</li>
+        <li><Icon name="code" size={17} /> Live-ops, IAP, gacha & economy systems</li>
+        <li><Icon name="external" size={15} /> Open-source Unity packages (UPM)</li>
       </ul>
     </div>
   </Section>
 
-  <!-- ===== EXPERIENCE / CAREER PATH ===== -->
+  <!-- ===== EXPERIENCE — the git branch graph (SIGNATURE) ===== -->
   <Section
     id="experience"
-    eyebrow="Career path"
-    title="Where I've worked"
-    sub="Six years shipping Unity games — full-time at a studio, plus freelance client work on the side."
+    eyebrow="git log --graph"
+    title="Career, by branch"
+    sub="Five years on main at Varisoft, with a freelance branch that forked off in 2021 and merged back — read newest-first, like a real log."
     class="section--alt"
   >
-    <ol class="xp" data-reveal-group>
-      {
-        experience.map((job) => (
-          <li class="xp__item">
-            <span class="xp__dot" aria-hidden="true" />
-            <div class="xp__card surface">
-              <div class="xp__top">
-                <div>
-                  <h3 class="xp__role">{job.role}</h3>
-                  <p class="xp__co">
-                    <span class="xp__coName">{job.company}</span>
-                    <span class="muted"> · {job.location}</span>
-                  </p>
-                </div>
-                <span class:list={['xp__period', { 'xp__period--now': job.current }]}>{job.period}</span>
-              </div>
-              <p class="xp__blurb">{job.blurb}</p>
-              <ul class="xp__points">
-                {job.points.map((pt) => (
-                  <li>{pt}</li>
-                ))}
-              </ul>
+    <div class="graph" data-reveal-group>
+      <!-- HEAD: current work -->
+      <div class="grow">
+        <div class="rail"><i class="node node--head"></i></div>
+        <div class="grow__card surface">
+          <div class="grow__top">
+            <span class="grow__ref grow__ref--head">HEAD → main</span>
+            <span class="grow__when grow__when--now">now</span>
+          </div>
+          <h3 class="grow__title">Live-ops systems on Dream Runner X</h3>
+          <p class="grow__co"><span class="grow__coName">Varisoft</span> · Unity Game Developer</p>
+          <p class="grow__body">
+            Own core live-ops systems end-to-end — mail, shop + IAP, gachapon, and daily rewards — with 832 commits
+            across the build.
+          </p>
+        </div>
+      </div>
+
+      <!-- main: the MMO -->
+      <div class="grow">
+        <div class="rail"><i class="node"></i></div>
+        <div class="grow__card surface">
+          <div class="grow__top">
+            <span class="grow__ref">main</span>
+            <span class="grow__when">2020 – present</span>
+          </div>
+          <h3 class="grow__title">Lead client engineer · ZabbWorld: Secret Stories</h3>
+          <p class="grow__co"><span class="grow__coName">Varisoft</span> · Unity Game Developer</p>
+          <p class="grow__body">
+            #1 contributor with 8,400+ commits over 5+ years on the studio's flagship social MMO — plus complete
+            titles shipped as sole programmer: Cat vs Aliens (Google Play + Huawei AppGallery), Once Pro Shoot and
+            Rescue Meow Meow on WebGL. Shipped against Nakama, PlayFab, and Firebase.
+          </p>
+        </div>
+      </div>
+
+      <!-- fork: freelance branch -->
+      <div class="grow grow--fork">
+        <div class="rail"><i class="node node--branch"></i></div>
+        <div class="branch">
+          <div class="grow__card grow__card--branch surface">
+            <div class="grow__top">
+              <span class="grow__ref grow__ref--branch">branch: freelance/*</span>
+              <span class="grow__when">2021 – 2022</span>
             </div>
-          </li>
-        ))
-      }
-    </ol>
+            <h3 class="grow__title">Freelance client work</h3>
+            <p class="grow__co"><span class="grow__coName grow__coName--free">Remote</span> · Unity Developer</p>
+            <p class="grow__body">
+              Standalone tools and a prototype delivered alongside studio work: <strong>Mascot Design</strong> (Spine 2D
+              creator with hi-res export), <strong>AvatarCustom</strong> (runtime Spine customization), and
+              <strong>SolarYield</strong> (solar-farm sim prototype).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- root: joined -->
+      <div class="grow">
+        <div class="rail"><i class="node node--root"></i></div>
+        <div class="grow__card surface">
+          <div class="grow__top">
+            <span class="grow__ref">root</span>
+            <span class="grow__when">2020</span>
+          </div>
+          <h3 class="grow__title">Joined Varisoft as a Unity developer</h3>
+          <p class="grow__co"><span class="grow__coName">Varisoft</span> · Bangkok, Thailand</p>
+          <p class="grow__body">Started on the MMO client and grew into the lead client-engineering role.</p>
+        </div>
+      </div>
+    </div>
   </Section>
 
   <!-- ===== HOW I WORK ===== -->
   <Section
     id="how-i-work"
-    eyebrow="How I work"
+    eyebrow="how i work"
     title="Strengths in practice"
     sub="My top CliftonStrengths® 34 themes — and what each one looks like in the code."
   >
     <div class="strengths" data-reveal>
       <ul class="strengths__grid" data-reveal-group>
         {
-          strengths.map((s) => (
+          strengths.map((s, i) => (
             <li class="strength">
               <div class="strength__top">
+                <span class="strength__idx">{String(i + 1).padStart(2, '0')}</span>
                 <span class="strength__name">{s.name}</span>
                 <span class="strength__domain">{s.domain}</span>
               </div>
@@ -221,14 +260,14 @@ const experience = [
   </Section>
 
   <!-- ===== SKILLS ===== -->
-  <Section id="skills" eyebrow="Toolbox" title="Skills & tech" class="section--alt">
+  <Section id="skills" eyebrow="toolbox" title="Skills & tech" class="section--alt">
     <SkillsGrid />
   </Section>
 
   <!-- ===== FEATURED WORK ===== -->
   <Section
     id="work"
-    eyebrow="Selected work"
+    eyebrow="selected work"
     title="Featured projects"
     sub="A few highlights — some playable right in your browser. See the full list for everything."
   >
@@ -236,7 +275,7 @@ const experience = [
       {featured.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="work__more" data-reveal>
-      <a class="btn" href="/projects/">All projects <Icon name="arrow" size={18} /></a>
+      <a class="btn" href="/projects/">All projects <Icon name="arrow" size={17} /></a>
     </div>
   </Section>
 
@@ -244,14 +283,14 @@ const experience = [
   <Section id="contact" class="section--alt">
     <div class="contact surface" data-reveal>
       <div>
-        <p class="eyebrow">Get in touch</p>
+        <p class="eyebrow">get in touch</p>
         <h2 class="contact__title">Looking for a senior Unity developer?</h2>
         <p class="muted">Open to new opportunities. The fastest way to reach me is email.</p>
       </div>
       <div class="contact__actions">
-        <a class="btn btn--primary" href={`mailto:${site.email}`}><Icon name="mail" size={18} /> {site.email}</a>
-        <a class="btn" href={site.resume} target="_blank" rel="noopener"><Icon name="download" size={16} /> Resume (PDF)</a>
-        <a class="btn btn--ghost" href={site.socials.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" size={18} /> LinkedIn</a>
+        <a class="btn btn--primary" href={`mailto:${site.email}`}><Icon name="mail" size={17} /> {site.email}</a>
+        <a class="btn" href={site.resume} target="_blank" rel="noopener"><Icon name="download" size={15} /> Resume (PDF)</a>
+        <a class="btn btn--ghost" href={site.socials.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" size={17} /> LinkedIn</a>
       </div>
     </div>
   </Section>
@@ -259,192 +298,204 @@ const experience = [
 
 <style>
   /* HERO */
-  .hero { padding-top: clamp(32px, 6vw, 64px); padding-bottom: clamp(32px, 5vw, 56px); }
+  .hero { padding-top: clamp(28px, 5vw, 56px); padding-bottom: clamp(28px, 4vw, 48px); }
   .hero__grid {
     display: grid;
-    grid-template-columns: 1.4fr 0.9fr;
-    gap: 40px;
+    grid-template-columns: 1.5fr 0.85fr;
+    gap: 44px;
     align-items: center;
   }
-  .hero__loc { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); font-size: 14px; margin-bottom: 18px; }
-  .hero__title { font-size: clamp(40px, 7vw, 72px); line-height: 0.98; letter-spacing: -0.02em; }
-  .hero__title span {
-    background: linear-gradient(120deg, var(--accent), var(--accent-2), var(--accent));
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradient-pan 6s linear infinite;
+  .hero__meta { font-family: var(--font-display); color: var(--text-dim); font-size: 13.5px; margin-bottom: 18px; }
+  .hero__meta::before { content: '// '; opacity: 0.55; }
+  .hero__title { font-size: clamp(38px, 6.6vw, 66px); line-height: 1.0; letter-spacing: -0.045em; }
+  .caret {
+    display: inline-block;
+    width: 0.6ch;
+    height: 0.92em;
+    margin-left: 0.12em;
+    transform: translateY(0.08em);
+    background: var(--accent);
+    animation: caret-blink 1.1s steps(1) infinite;
   }
-  .hero__role { font-family: var(--font-display); font-size: clamp(16px, 2.2vw, 20px); font-weight: 600; color: var(--text); margin-top: 16px; }
-  .hero__role span { color: var(--text-dim); font-weight: 500; }
-  .hero__tagline { color: var(--text-dim); font-size: 17px; margin-top: 14px; max-width: 56ch; }
+  .hero__role { font-family: var(--font-display); font-size: clamp(15px, 2vw, 18px); font-weight: 500; color: var(--accent); margin-top: 20px; }
+  .hero__tagline { color: var(--text-dim); font-size: 16.5px; margin-top: 14px; max-width: 54ch; }
   .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
-  .hero__socials { display: flex; gap: 16px; margin-top: 24px; }
+  .hero__socials { display: flex; gap: 18px; margin-top: 24px; }
   .hero__socials a { color: var(--text-dim); transition: color 0.15s ease, transform 0.15s ease; }
   .hero__socials a:hover { color: var(--accent); transform: translateY(-2px); }
 
-  .hero__media { position: relative; justify-self: center; }
-  .hero__photo {
-    position: relative;
-    width: clamp(220px, 30vw, 320px);
-    aspect-ratio: 1;
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: var(--surface-2);
-    box-shadow: var(--shadow);
-    z-index: 1;
-  }
-  .hero__photo img { width: 100%; height: 100%; object-fit: cover; }
-  .hero__media { animation: float-y 7s ease-in-out infinite; }
-  .hero__ring {
-    position: absolute;
-    inset: -14px;
-    border-radius: 32px;
-    background: linear-gradient(135deg, rgba(77, 163, 255, 0.5), rgba(0, 229, 199, 0.4));
-    filter: blur(26px);
-    opacity: 0.5;
-    z-index: 0;
-    animation: glow-pulse 5s ease-in-out infinite;
-  }
+  /* Author identity card (photo framed like a commit-author block) */
+  .idcard { justify-self: center; width: min(300px, 100%); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); background: var(--surface); overflow: hidden; box-shadow: var(--shadow); }
+  .idcard__photo { aspect-ratio: 4 / 5; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+  .idcard__photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.12); }
+  .idcard__cap { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; padding: 14px 16px; font-family: var(--font-display); font-size: 12.5px; }
+  .idcard__k { color: var(--text-dim); }
+  .idcard__k::after { content: ':'; }
+  .idcard__v { color: var(--text); }
 
-  .hero__stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: clamp(36px, 6vw, 64px);
-    padding: 22px;
-    border: 1px solid var(--border);
+  /* SIGNATURE — git shortlog */
+  .shortlog {
+    margin-top: clamp(34px, 5vw, 56px);
+    border: 1px solid var(--border-strong);
     border-radius: var(--radius-lg);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+    background: var(--surface);
+    overflow: hidden;
+    box-shadow: var(--shadow);
   }
-  .stat { display: flex; flex-direction: column; gap: 4px; text-align: center; }
-  .stat__value { font-family: var(--font-display); font-size: clamp(24px, 4vw, 34px); font-weight: 700; color: var(--accent); }
-  .stat__label { font-size: 13px; color: var(--text-dim); }
+  .shortlog__bar { display: flex; align-items: center; gap: 8px; padding: 11px 16px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
+  .shortlog__dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--border-strong); }
+  .shortlog__dot:nth-child(1) { background: #d98b73; }
+  .shortlog__dot:nth-child(2) { background: #d9b873; }
+  .shortlog__dot:nth-child(3) { background: #86a67a; }
+  .shortlog__cmd { font-family: var(--font-display); font-size: 13px; color: var(--text-dim); margin-left: 8px; }
+  .shortlog__cmd::before { content: '$ '; color: var(--accent); }
+  .shortlog__body { padding: 8px 6px; }
+  .log {
+    display: grid;
+    grid-template-columns: 58px minmax(90px, 150px) 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 7px 12px;
+    font-family: var(--font-display);
+    border-radius: var(--radius);
+  }
+  .log:hover { background: rgba(27, 75, 67, 0.05); }
+  .log__n { text-align: right; font-weight: 600; font-size: 15px; color: var(--text); font-variant-numeric: tabular-nums; }
+  .log__meter { height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+  .log__fill { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
+  .log__name { font-size: 14px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .log__note { font-size: 12.5px; color: var(--text-dim); white-space: nowrap; }
+  .shortlog__foot { display: flex; flex-wrap: wrap; gap: 8px 26px; padding: 14px 18px; border-top: 1px solid var(--border); font-family: var(--font-display); font-size: 13px; color: var(--text-dim); }
+  .shortlog__foot strong { color: var(--accent); font-weight: 600; }
 
   /* ABOUT */
   .about { display: grid; grid-template-columns: 1.5fr 1fr; gap: 36px; align-items: start; }
-  .about__text p { color: #cfd8e2; margin-bottom: 16px; font-size: 16.5px; }
+  .about__text p { color: #3a352d; margin-bottom: 16px; font-size: 16.5px; }
   .about__ai { display: flex; gap: 10px; align-items: start; color: var(--text-dim) !important; font-size: 15px !important; border-left: 2px solid var(--accent); padding-left: 14px; }
   .about__ai :global(.icon) { color: var(--accent); margin-top: 3px; }
-  .about__highlights { display: grid; gap: 12px; }
-  .about__highlights li { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); font-family: var(--font-display); font-size: 15px; font-weight: 500; }
-  .about__highlights :global(.icon) { color: var(--accent-2); }
+  .about__highlights { display: grid; gap: 10px; }
+  .about__highlights li { display: flex; align-items: center; gap: 12px; padding: 13px 15px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); font-family: var(--font-display); font-size: 14px; font-weight: 500; }
+  .about__highlights :global(.icon) { color: var(--accent); }
+
+  /* EXPERIENCE — git branch graph */
+  .graph { max-width: 780px; }
+  .grow { display: grid; grid-template-columns: 40px 1fr; }
+  .rail { position: relative; }
+  /* continuous vertical line down the rail */
+  .rail::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--border-strong); }
+  .grow:first-child .rail::before { top: 22px; }
+  .grow:last-child .rail::before { bottom: calc(100% - 22px); }
+  .node {
+    position: absolute;
+    left: 50%;
+    top: 14px;
+    width: 15px;
+    height: 15px;
+    margin-left: -7.5px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    z-index: 1;
+  }
+  .node--head { background: var(--accent); box-shadow: 0 0 0 4px rgba(27, 75, 67, 0.14); }
+  .node--root { border-style: dashed; }
+  .grow__card { padding: 18px 20px; margin: 0 0 16px 8px; }
+  .grow__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 14px; margin-bottom: 10px; }
+  .grow__ref {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: var(--radius);
+    color: var(--text-dim);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  .grow__ref--head { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+  .grow__ref--branch { color: var(--accent-2); border-color: rgba(154, 107, 31, 0.4); background: rgba(154, 107, 31, 0.08); }
+  .grow__when { font-family: var(--font-display); font-size: 12.5px; color: var(--text-dim); }
+  .grow__when--now { color: var(--accent); }
+  .grow__title { font-size: 17px; letter-spacing: -0.02em; }
+  .grow__co { font-family: var(--font-display); font-size: 13px; margin-top: 4px; color: var(--text-dim); }
+  .grow__coName { color: var(--accent); font-weight: 500; }
+  .grow__coName--free { color: var(--accent-2); }
+  .grow__body { color: #3a352d; font-size: 14.5px; margin-top: 10px; line-height: 1.55; }
+
+  /* fork: branch node + indented branch card with an elbow connector */
+  .node--branch { border-color: var(--accent-2); }
+  .grow--fork .rail::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 21px;
+    width: 26px;
+    height: 20px;
+    border-left: 2px solid var(--accent-2);
+    border-bottom: 2px solid var(--accent-2);
+    border-bottom-left-radius: 10px;
+    transform: translateX(-1px) scaleX(-1);
+  }
+  .branch { padding-left: 26px; }
+  .grow__card--branch { border-style: dashed; border-color: rgba(154, 107, 31, 0.45); background: rgba(154, 107, 31, 0.04); }
 
   /* HOW I WORK (strengths) */
   .strengths__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
   .strength { padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); transition: border-color 0.18s ease, transform 0.18s ease; }
-  .strength:hover { border-color: rgba(77, 163, 255, 0.5); transform: translateY(-2px); }
-  .strength__top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
-  .strength__name { font-family: var(--font-display); font-weight: 700; font-size: 16px; }
-  .strength__domain { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2); white-space: nowrap; }
-  .strength__note { color: #cfd8e2; font-size: 14px; line-height: 1.5; }
+  .strength:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .strength__top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+  .strength__idx { font-family: var(--font-display); font-size: 11px; color: var(--text-dim); }
+  .strength__name { font-family: var(--font-display); font-weight: 600; font-size: 15.5px; letter-spacing: -0.01em; }
+  .strength__domain { font-family: var(--font-display); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-2); white-space: nowrap; margin-left: auto; }
+  .strength__note { color: #3a352d; font-size: 14px; line-height: 1.5; }
   .strengths__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-top: 20px; }
   .strengths__lead { display: inline-flex; align-items: center; gap: 8px; color: var(--text-dim); font-size: 14.5px; border-left: 2px solid var(--accent); padding-left: 12px; }
   .strengths__lead :global(.icon) { color: var(--accent); }
   .strengths__lead strong { color: var(--text); }
-  .strengths__credit { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); font-size: 12.5px; transition: color 0.15s ease; }
+  .strengths__credit { display: inline-flex; align-items: center; gap: 6px; color: var(--text-dim); font-size: 12.5px; font-family: var(--font-display); transition: color 0.15s ease; }
   .strengths__credit:hover { color: var(--accent); }
 
-  /* EXPERIENCE (career timeline) */
-  .xp { display: grid; gap: 0; max-width: 840px; list-style: none; padding: 0; margin: 0; }
-  .xp__item { position: relative; padding: 0 0 20px 34px; }
-  .xp__item:last-child { padding-bottom: 0; }
-  .xp__item::before {
-    content: '';
-    position: absolute;
-    left: 9px;
-    top: 8px;
-    bottom: 0;
-    width: 2px;
-    background: var(--border);
-  }
-  .xp__item:last-child::before { display: none; }
-  .xp__dot {
-    position: absolute;
-    left: 2px;
-    top: 6px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--surface);
-    border: 2px solid var(--accent);
-    box-shadow: 0 0 0 4px rgba(77, 163, 255, 0.12);
-  }
-  .xp__card { padding: 20px 22px; }
-  .xp__top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 12px; }
-  .xp__role { font-size: 18px; }
-  .xp__co { font-size: 14px; margin-top: 3px; }
-  .xp__coName { font-family: var(--font-display); font-weight: 600; color: var(--accent); }
-  .xp__period {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-dim);
-    white-space: nowrap;
-    padding: 3px 10px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-  }
-  .xp__period--now { color: var(--accent-2); border-color: rgba(0, 229, 199, 0.35); }
-  .xp__blurb { color: #cfd8e2; font-size: 15px; margin-bottom: 14px; }
-  .xp__points { display: grid; gap: 9px; }
-  .xp__points li { position: relative; padding-left: 22px; color: #cfd8e2; font-size: 14.5px; line-height: 1.5; }
-  .xp__points li::before {
-    content: '';
-    position: absolute;
-    left: 3px;
-    top: 8px;
-    width: 7px;
-    height: 7px;
-    border-radius: 2px;
-    background: var(--accent);
-    transform: rotate(45deg);
-  }
-
-  /* shared section bg */
-  :global(.section--alt) { background: rgba(255, 255, 255, 0.014); border-block: 1px solid var(--border); }
+  /* shared alt section bg */
+  :global(.section--alt) { background: rgba(23, 20, 15, 0.022); border-block: 1px solid var(--border); }
 
   /* CARDS GRID */
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
   .work__more { display: flex; justify-content: center; margin-top: 36px; }
 
   /* CONTACT */
-  .contact { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; padding: clamp(26px, 4vw, 44px); }
-  .contact__title { font-size: clamp(22px, 3vw, 30px); margin: 8px 0; }
+  .contact { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; padding: clamp(26px, 4vw, 42px); }
+  .contact__title { font-size: clamp(21px, 3vw, 29px); margin: 8px 0; letter-spacing: -0.03em; }
   .contact__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
   @media (max-width: 860px) {
     .hero__grid { grid-template-columns: 1fr; gap: 28px; }
-    .hero__media { order: -1; justify-self: start; }
+    .idcard { order: -1; justify-self: start; width: min(260px, 100%); }
     .about { grid-template-columns: 1fr; gap: 24px; }
   }
-  @media (max-width: 560px) {
-    .hero__stats { grid-template-columns: 1fr; gap: 18px; }
-    .hero__title { font-size: clamp(36px, 12vw, 52px); }
+  @media (max-width: 620px) {
+    .hero__title { font-size: clamp(29px, 8vw, 44px); }
+    .log { grid-template-columns: 48px 1fr; gap: 8px 12px; }
+    .log__meter { grid-column: 1 / -1; order: 3; }
+    .log__note { display: none; }
+    .shortlog__foot { flex-direction: column; gap: 6px; }
   }
 </style>
 
 <script>
-  // Count-up the hero stats when they scroll into view (respects reduced motion).
+  // Count-up the shortlog commit numbers when they scroll into view (respects reduced motion).
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const stats = document.querySelectorAll<HTMLElement>('.stat__value');
-  if (!reduce && 'IntersectionObserver' in window && stats.length) {
+  const nums = document.querySelectorAll<HTMLElement>('.log__n');
+  if (!reduce && 'IntersectionObserver' in window && nums.length) {
     const fmt = (n: number) => n.toLocaleString('en-US');
     const run = (el: HTMLElement) => {
       const raw = (el.textContent || '').trim();
-      const m = raw.match(/([\d,]+)/);
-      if (!m) return;
-      const target = parseInt(m[1].replace(/,/g, ''), 10);
-      const prefix = raw.slice(0, m.index);
-      const suffix = raw.slice((m.index || 0) + m[1].length);
-      const dur = 1400;
+      const target = parseInt(raw.replace(/,/g, ''), 10);
+      if (!Number.isFinite(target)) return;
+      const dur = 1100;
       const start = performance.now();
       const tick = (now: number) => {
         const p = Math.min((now - start) / dur, 1);
         const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = prefix + fmt(Math.round(target * eased)) + suffix;
+        el.textContent = fmt(Math.round(target * eased));
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
@@ -458,8 +509,8 @@ const experience = [
           }
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.6 }
     );
-    stats.forEach((s) => io.observe(s));
+    nums.forEach((n) => io.observe(n));
   }
 </script>

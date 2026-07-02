@@ -58,7 +58,7 @@ import Icon from './Icon.astro';
     border-bottom: 1px solid transparent;
   }
   .nav.is-scrolled {
-    background: rgba(11, 14, 20, 0.78);
+    background: rgba(236, 234, 227, 0.82);
     backdrop-filter: blur(12px);
     border-bottom-color: var(--border);
   }
@@ -82,11 +82,11 @@ import Icon from './Icon.astro';
     place-items: center;
     width: 34px;
     height: 34px;
-    border-radius: 9px;
-    font-size: 14px;
+    border-radius: var(--radius);
+    font-size: 13px;
     letter-spacing: 0.02em;
     color: var(--accent-ink);
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    background: var(--accent);
     flex: none;
   }
   .nav__name {
@@ -139,7 +139,7 @@ import Icon from './Icon.astro';
       align-items: stretch;
       gap: 4px;
       padding: 12px 24px 20px;
-      background: rgba(11, 14, 20, 0.97);
+      background: rgba(236, 234, 227, 0.98);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       clip-path: inset(0 0 100% 0);
