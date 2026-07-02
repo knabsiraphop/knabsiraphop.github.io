@@ -164,13 +164,13 @@ const categories = ['All', ...Array.from(catSet).sort()];
     margin: 28px 0 24px;
   }
   .install__icon { color: var(--accent-2); margin-top: 2px; flex: none; }
-  .install__title { font-family: var(--font-display); font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .install__title { font-family: var(--font-mono); font-weight: 600; font-size: 14px; margin-bottom: 4px; color: var(--text); }
   .install__hint { font-size: 13.5px; line-height: 1.55; }
 
   .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
   .filter {
-    font-family: var(--font-display);
-    font-size: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
     font-weight: 500;
     padding: 8px 14px;
     border-radius: var(--radius);
@@ -199,9 +199,9 @@ const categories = ['All', ...Array.from(catSet).sort()];
   .pkg:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: var(--shadow); }
   .pkg__top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
   .pkg__name { font-size: 17px; line-height: 1.25; }
-  .pkg__ver { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--accent-2); flex: none; }
+  .pkg__ver { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--accent-soft); flex: none; }
   .pkg__ver--soon { color: var(--text-dim); }
-  .pkg__desc { font-size: 14px; color: #3a352d; line-height: 1.55; flex: 1; }
+  .pkg__desc { font-size: 14px; color: var(--prose); line-height: 1.55; flex: 1; }
   .pkg__tags { display: flex; flex-wrap: wrap; gap: 7px; }
   .pkg__upm {
     font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;

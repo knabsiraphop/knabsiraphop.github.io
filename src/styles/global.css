@@ -1,33 +1,38 @@
 /* ============================================================
    Siraphop Puriwattanakul — Portfolio
-   Theme: "Ship Log" — warm paper, ink, single pine accent.
-   The visual language of version control & release notes:
-   a career measured in commits and shipped titles.
-   Fonts (IBM Plex Mono / IBM Plex Sans) loaded in BaseLayout.
+   Theme: "Codex" — a dark arcane grimoire of shipped worlds.
+   Midnight indigo, antique-gold sigils, mystic violet, parchment ink.
+   The honest signatures (a git shortlog, a branch graph) are kept,
+   re-lit as pages of an old codex rather than a bright console.
+   Fonts (Fraunces / IBM Plex Sans / IBM Plex Mono) in BaseLayout.
    ============================================================ */
 
 /* ---------- Design tokens ---------- */
 :root {
-  --bg: #ECEAE3;            /* warm paper */
-  --surface: #F5F4EF;       /* raised panel */
-  --surface-2: #E3E0D6;     /* sunken / darker paper */
-  --text: #17140F;          /* warm near-black ink */
-  --text-dim: #6B6459;      /* warm grey, secondary */
-  --accent: #1B4B43;        /* deep pine — console-success, spent sparingly */
-  --accent-2: #9A6B1F;      /* muted gold — "live / playable" signal only */
-  --accent-ink: #F5F4EF;    /* paper text on accent fills */
-  --border: #D6D1C4;        /* warm hairline */
-  --border-strong: #C4BEAE;
+  --bg: #0C0A15;            /* deep midnight indigo */
+  --bg-2: #0A0813;          /* deepest, for vignette edges */
+  --surface: #16121F;       /* violet-tinged panel */
+  --surface-2: #1F1A2E;     /* raised panel */
+  --text: #EFE7D4;          /* parchment — headings / strong */
+  --prose: #C7BCA8;         /* softer parchment — body copy */
+  --text-dim: #8A8098;      /* muted violet-grey */
+  --accent: #D4A24C;        /* antique gold — sigils, spent sparingly */
+  --accent-soft: #E7C57E;   /* lighter gold for hover/text */
+  --accent-2: #9C7BD6;      /* mystic amethyst — live / playable signal */
+  --accent-ink: #17110A;    /* dark ink on gold fills */
+  --border: #29223A;        /* violet hairline */
+  --border-strong: #3A3152;
 
   --maxw: 1080px;
-  --rail: 132px;            /* left margin rail width on wide screens */
-  --radius: 4px;
-  --radius-lg: 8px;
-  --shadow: 0 14px 34px -20px rgba(23, 20, 15, 0.4);
-  --glow: 0 0 0 1px rgba(27, 75, 67, 0.28);
+  --radius: 5px;
+  --radius-lg: 10px;
+  --shadow: 0 22px 50px -24px rgba(0, 0, 0, 0.85);
+  --glow: 0 0 0 1px rgba(212, 162, 76, 0.3), 0 12px 40px -12px rgba(212, 162, 76, 0.28);
+  --glow-violet: 0 0 40px -6px rgba(156, 123, 214, 0.5);
 
-  --font-display: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
 
 /* ---------- Reset ---------- */
@@ -46,14 +51,21 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-color: var(--bg);
-  /* faint engineering-notebook dot grid */
-  background-image: radial-gradient(rgba(23, 20, 15, 0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-position: -1px -1px;
-  color: var(--text);
+  /* arcane atmosphere: gold moon top-right, violet depth bottom-left, faint starfield, vignette */
+  background-image:
+    radial-gradient(900px 560px at 88% -6%, rgba(212, 162, 76, 0.10), transparent 62%),
+    radial-gradient(820px 620px at -8% 108%, rgba(156, 123, 214, 0.12), transparent 60%),
+    radial-gradient(1px 1px at 20% 30%, rgba(239, 231, 212, 0.45), transparent),
+    radial-gradient(1px 1px at 67% 18%, rgba(239, 231, 212, 0.30), transparent),
+    radial-gradient(1px 1px at 43% 62%, rgba(239, 231, 212, 0.25), transparent),
+    radial-gradient(1.5px 1.5px at 82% 47%, rgba(231, 197, 126, 0.40), transparent),
+    radial-gradient(1px 1px at 12% 78%, rgba(239, 231, 212, 0.28), transparent),
+    radial-gradient(1200px 900px at 50% 40%, transparent 60%, rgba(10, 8, 19, 0.6) 100%);
+  background-attachment: fixed;
+  color: var(--prose);
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -66,9 +78,11 @@ ul { list-style: none; padding: 0; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  line-height: 1.1;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  font-optical-sizing: auto;
 }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
@@ -89,7 +103,7 @@ h1, h2, h3, h4 {
   background: var(--accent);
   color: var(--accent-ink);
   padding: 10px 16px;
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-weight: 600;
 }
 .skip-link:focus { left: 0; }
@@ -97,23 +111,23 @@ h1, h2, h3, h4 {
 /* ---------- Layout ---------- */
 .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: 24px; }
 
-.section { padding-block: clamp(48px, 7vw, 92px); position: relative; }
+.section { padding-block: clamp(48px, 7vw, 96px); position: relative; }
 .section__head { margin-bottom: clamp(26px, 4vw, 44px); }
 
-/* Eyebrow reads like a code comment / file marker */
+/* Eyebrow reads like a marginal note / incantation label */
 .eyebrow {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   text-transform: lowercase;
-  letter-spacing: 0.02em;
-  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-size: 12.5px;
   font-weight: 500;
   color: var(--accent);
   display: inline-flex;
   align-items: center;
 }
-.eyebrow::before { content: '// '; white-space: pre; opacity: 0.55; }
+.eyebrow::before { content: '✦ '; white-space: pre; opacity: 0.85; }
 
-.section__title { font-size: clamp(25px, 3.6vw, 38px); margin-top: 12px; letter-spacing: -0.03em; }
+.section__title { font-size: clamp(28px, 4.4vw, 46px); margin-top: 12px; letter-spacing: -0.01em; }
 .section__sub { color: var(--text-dim); margin-top: 12px; max-width: 60ch; }
 
 /* ---------- Buttons ---------- */
@@ -121,10 +135,10 @@ h1, h2, h3, h4 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-weight: 500;
   font-size: 14px;
-  padding: 11px 16px;
+  padding: 11px 17px;
   border-radius: var(--radius);
   border: 1px solid var(--border-strong);
   color: var(--text);
@@ -132,58 +146,57 @@ h1, h2, h3, h4 {
   cursor: pointer;
   transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 }
-.btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
-.btn--primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.btn--primary:hover { background: #143a34; color: var(--accent-ink); box-shadow: var(--shadow); }
+.btn:hover { border-color: var(--accent); color: var(--accent-soft); transform: translateY(-1px); }
+.btn--primary { background: linear-gradient(180deg, var(--accent-soft), var(--accent)); color: var(--accent-ink); border-color: transparent; }
+.btn--primary:hover { color: var(--accent-ink); box-shadow: var(--glow); }
 .btn--ghost { background: transparent; border-color: var(--border); }
-.btn--sm { padding: 8px 12px; font-size: 13px; }
+.btn--sm { padding: 8px 13px; font-size: 13px; }
 
 /* ---------- Chips / tags ---------- */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1;
-  padding: 6px 9px;
+  padding: 6px 10px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   color: var(--text-dim);
-  background: rgba(23, 20, 15, 0.015);
+  background: rgba(239, 231, 212, 0.02);
   white-space: nowrap;
 }
-.chip--accent { color: var(--accent); border-color: rgba(27, 75, 67, 0.35); }
-.chip--live { color: var(--accent-2); border-color: rgba(154, 107, 31, 0.4); }
-.chip--live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); }
+.chip--accent { color: var(--accent-soft); border-color: rgba(212, 162, 76, 0.35); }
+.chip--live { color: var(--accent-2); border-color: rgba(156, 123, 214, 0.45); }
+.chip--live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 8px var(--accent-2); }
 
 /* ---------- Surface / card ---------- */
 .surface { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
 
 /* ---------- Prose (markdown body on project pages) ---------- */
-.prose { color: var(--text); font-size: 16px; }
+.prose { color: var(--prose); font-size: 16px; }
 .prose > * + * { margin-top: 14px; }
-.prose h2 { font-size: 22px; margin-top: 32px; }
-.prose h3 { font-size: 17px; margin-top: 24px; color: var(--accent); font-family: var(--font-display); }
-.prose p { color: #3a352d; }
+.prose h2 { font-size: 24px; margin-top: 32px; }
+.prose h3 { font-size: 18px; margin-top: 24px; color: var(--accent-soft); font-family: var(--font-display); font-weight: 500; }
+.prose p { color: var(--prose); }
 .prose ul { display: grid; gap: 10px; margin-top: 14px; }
-.prose li { position: relative; padding-left: 24px; color: #3a352d; }
+.prose li { position: relative; padding-left: 24px; color: var(--prose); }
 .prose li::before {
-  content: '+';
+  content: '✦';
   position: absolute;
-  left: 4px;
-  top: 0;
-  font-family: var(--font-display);
+  left: 3px;
+  top: 1px;
+  font-size: 11px;
   color: var(--accent);
-  font-weight: 600;
 }
-.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.prose a { color: var(--accent-soft); text-decoration: underline; text-underline-offset: 3px; }
 .prose strong { color: var(--text); }
 
 /* ---------- Helpers ---------- */
 .muted { color: var(--text-dim); }
 .flex { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-.mono { font-family: var(--font-display); }
+.mono { font-family: var(--font-mono); }
 
 /* ---------- Placeholder media (blank slots awaiting real assets) ---------- */
 .ph {
@@ -192,7 +205,7 @@ h1, h2, h3, h4 {
   text-align: center;
   gap: 6px;
   background:
-    repeating-linear-gradient(45deg, rgba(23, 20, 15, 0.03) 0 12px, transparent 12px 24px),
+    repeating-linear-gradient(45deg, rgba(239, 231, 212, 0.03) 0 12px, transparent 12px 24px),
     var(--surface-2);
   color: var(--text-dim);
   border: 1px dashed var(--border-strong);
@@ -201,21 +214,21 @@ h1, h2, h3, h4 {
   padding: 24px;
 }
 .ph__icon { opacity: 0.7; }
-.ph__label { font-family: var(--font-display); font-size: 13px; letter-spacing: 0.02em; }
+.ph__label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.02em; }
 .ph__hint { font-size: 12px; opacity: 0.7; }
 
 /* ---------- Scroll reveal (only active when JS is on) ---------- */
 html.js [data-reveal] {
   opacity: 0;
   transform: translateY(14px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 html.js [data-reveal].is-in { opacity: 1; transform: none; }
 
 html.js [data-reveal-group] > * {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 html.js [data-reveal-group].is-in > * { opacity: 1; transform: none; }
 html.js [data-reveal-group].is-in > *:nth-child(1) { transition-delay: 0.02s; }
@@ -228,13 +241,17 @@ html.js [data-reveal-group].is-in > *:nth-child(7) { transition-delay: 0.38s; }
 html.js [data-reveal-group].is-in > *:nth-child(n + 8) { transition-delay: 0.44s; }
 
 /* ---------- Motion keyframes ---------- */
-@keyframes caret-blink {
+@keyframes ember-blink {
   0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+  50%, 100% { opacity: 0.25; }
 }
-@keyframes node-in {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 /* ---------- Reduced motion ---------- */
