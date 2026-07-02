@@ -4,10 +4,10 @@ order: 8
 role: "Sole Programmer"
 company: "Varisoft"
 period: "2020"
-platforms: ["Android (Huawei)"]
+platforms: ["Android (Google Play)", "Android (Huawei AppGallery)"]
 tags: ["Sole programmer", "Arcade", "Mobile"]
 featured: true
-summary: "Sole programmer on a top-down arcade defender — from an empty project to a Huawei AppGallery release in about four weeks."
+summary: "Sole programmer on a top-down arcade defender — from an empty project to a Google Play and Huawei AppGallery release in about four weeks."
 status: "Shipped"
 cover: "/img/projects/cat-vs-aliens/icon.webp"
 icon: "/img/projects/cat-vs-aliens/icon.webp"
@@ -29,10 +29,10 @@ links: {}
 
 - **Core gameplay** — aim-and-tap bombing, enemy variety (normal / special / boss) with physics-driven movement, a timed spawner with difficulty ramp, barricade wall-HP, lives, scoring, coin drops, and screen-shake.
 - **Meta-game** — levels, a randomized skins shop (gacha), settings (music / effect / vibrate), and PlayerPrefs save / load.
-- **Huawei platform integration (HMS)** — account sign-in, achievements, and leaderboards via Huawei Game Service, plus banner ads — shipping to Huawei AppGallery rather than Google / Firebase.
+- **Huawei platform integration (HMS)** — account sign-in, achievements, and leaderboards via Huawei Game Service, plus banner ads — shipped to both Google Play and Huawei AppGallery.
 - **Content pipeline** — Google-Sheet-driven stage and level data.
 
 ## Engineering notes
 
 - A pragmatic theme pivot (COVID → Aliens) handled via a folder and asset restructure without rewriting gameplay — a practical response to app-store topic sensitivity.
-- Demonstrates range across mobile platforms: this title targets the Huawei ecosystem specifically, alongside my Google / Firebase and PlayFab work elsewhere.
+- Demonstrates range across mobile platforms: alongside a standard Google Play release, this title adds Huawei ecosystem support (HMS), showing range beyond my Google / Firebase and PlayFab work elsewhere.
