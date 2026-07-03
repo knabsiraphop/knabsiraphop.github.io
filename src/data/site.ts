@@ -18,11 +18,9 @@ export const site = {
 };
 
 export const nav = [
+  { label: 'About', href: '/#about' },
   { label: 'Work', href: '/projects/' },
   { label: 'Open Source', href: '/open-source/' },
-  { label: 'About', href: '/#about' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Skills', href: '/#skills' },
   { label: 'Contact', href: '/#contact' },
 ];
 
