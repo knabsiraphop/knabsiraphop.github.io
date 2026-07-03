@@ -30,7 +30,7 @@
   --glow: 0 0 0 1px rgba(212, 162, 76, 0.3), 0 12px 40px -12px rgba(212, 162, 76, 0.28);
   --glow-violet: 0 0 40px -6px rgba(156, 123, 214, 0.5);
 
-  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-display: 'Fraunces Variable', 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
