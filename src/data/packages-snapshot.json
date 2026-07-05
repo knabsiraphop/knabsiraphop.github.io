@@ -148,7 +148,7 @@
     "upm": "com.kidzdev.unity.text-scroll",
     "version": "1.0.0",
     "unity": "6000.0",
-    "description": "Animated text for uGUI/TMPro: marquee ticker, credits roll, auto-fit overflow scrolling, and typewriter character reveal. Two independent component families, no shared dependency beyond TMPro.",
+    "description": "Animated text for uGUI/TMPro: marquee ticker, credits roll, auto-fit overflow scrolling, typewriter character reveal, and a count-up number roller. Independent component families, no shared dependency beyond TMPro.",
     "category": "UI",
     "stars": 0,
     "updated": "2026-07-05"
