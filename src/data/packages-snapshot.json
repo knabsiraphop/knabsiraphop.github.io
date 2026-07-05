@@ -1,47 +1,25 @@
 [
   {
-    "repo": "kidzdev-unity-addressables-toolkit",
-    "name": "KidzDev Unity Addressables Toolkit",
-    "upm": "com.kidzdev.unity.addressables-toolkit",
-    "version": "1.4.1",
+    "repo": "kidzdev-unity-google-sheet-importer",
+    "name": "KidzDev Unity Google Sheet Importer",
+    "upm": "com.kidzdev.unity.google-sheet-importer",
+    "version": "1.0.0",
     "unity": "6000.0",
-    "description": "Utilities for working with Unity Addressables — asset loading, pooling, scope tracking, CDN switching, and content download.",
-    "category": "Core",
-    "stars": 0,
-    "updated": "2026-06-20"
+    "description": "Editor tool for importing data from Google Sheets into Unity. Fetches rows via the Sheets API v4, maps columns to C# fields via reflection, and writes them as JSON files or ScriptableObject assets.",
+    "category": "Editor",
+    "stars": 1,
+    "updated": "2026-07-05"
   },
   {
-    "repo": "kidzdev-unity-recyclable-scroll",
-    "name": "KidzDev Unity Recyclable Scroll",
-    "upm": "com.kidzdev.unity.recyclable-scroll",
-    "version": "0.4.1",
+    "repo": "kidzdev-unity-audio",
+    "name": "KidzDev Unity Audio",
+    "upm": "com.kidzdev.unity.audio",
+    "version": "1.0.2",
     "unity": "6000.0",
-    "description": "High-performance recyclable ScrollRect for Unity uGUI — object pooling, linear & loop modes, variable item sizes, sync/async item loading.",
-    "category": "UI",
+    "description": "Production-grade BGM/SFX/Ambience audio service. UniTask async, AudioMixer-backed with dB conversion, cancellable crossfades, pooled sources, plug-in clip loader (Resources default, optional Addressables adapter), and plug-in volume store.",
+    "category": "Audio",
     "stars": 0,
-    "updated": "2026-06-20"
-  },
-  {
-    "repo": "kidzdev-unity-responsive-fit",
-    "name": "KidzDev Unity Responsive Fit",
-    "upm": "com.kidzdev.unity.responsive-fit",
-    "version": "2.0.0",
-    "unity": "6000.0",
-    "description": "Responsive item sizing for Unity uGUI — fit scroll/grid items to any screen (items-per-view, aspect ratio, fixed columns, safe area).",
-    "category": "UI",
-    "stars": 0,
-    "updated": "2026-06-20"
-  },
-  {
-    "repo": "kidzdev-unity-localization",
-    "name": "KidzDev Unity Localization",
-    "upm": "com.kidzdev.unity.localization",
-    "version": "1.0.1",
-    "unity": "6000.0",
-    "description": "Lightweight localization system with UniTask async loading. JSON and ScriptableObject data sources, plug-in custom loaders, and auto-refreshing TMP_Text components.",
-    "category": "Localization",
-    "stars": 0,
-    "updated": "2026-06-20"
+    "updated": "2026-07-05"
   },
   {
     "repo": "kidzdev-unity-extensions",
@@ -52,40 +30,84 @@
     "description": "Handy C# / Unity extension methods — strings, collections, arrays, dictionaries, and more.",
     "category": "Core",
     "stars": 0,
-    "updated": "2026-06-21"
+    "updated": "2026-07-05"
   },
   {
-    "repo": "kidzdev-unity-state-machine",
-    "name": "KidzDev Unity State Machine",
-    "upm": "com.kidzdev.unity.state-machine",
+    "repo": "kidzdev-unity-local-save",
+    "name": "KidzDev Unity Local Save",
+    "upm": "com.kidzdev.unity.local-save",
     "version": "1.0.0",
     "unity": "6000.0",
-    "description": "Production-grade state machine — synchronous and UniTask-async flavors, optional transition graph with per-edge guards, QueueLatest button-mash safety, and no-state-collapse guarantees.",
+    "description": "Generic on-disk persistence for any [Serializable] type. JSON + optional Base64, atomic + durable writes, automatic backup-on-corrupt recovery, injectable storage/serializer seams. Zero external dependencies.",
     "category": "Core",
     "stars": 0,
-    "updated": "2026-06-22"
+    "updated": "2026-07-05"
   },
   {
-    "repo": "kidzdev-unity-google-sheet-importer",
-    "name": "KidzDev Unity Google Sheet Importer",
-    "upm": "com.kidzdev.unity.google-sheet-importer",
-    "version": "1.0.0",
+    "repo": "kidzdev-unity-localization",
+    "name": "KidzDev Unity Localization",
+    "upm": "com.kidzdev.unity.localization",
+    "version": "1.0.1",
     "unity": "6000.0",
-    "description": "Editor tool for importing data from Google Sheets into Unity. Fetches rows via the Sheets API v4, maps columns to C# fields via reflection, and writes them as JSON or ScriptableObject assets.",
-    "category": "Editor",
-    "stars": 1,
-    "updated": "2026-06-25"
+    "description": "Lightweight localization system with UniTask async loading. Supports JSON and ScriptableObject data sources, plug-in custom loaders, and auto-refreshing TMP_Text components.",
+    "category": "Localization",
+    "stars": 0,
+    "updated": "2026-07-05"
   },
   {
-    "repo": "kidzdev-unity-audio",
-    "name": "KidzDev Unity Audio",
-    "upm": "com.kidzdev.unity.audio",
+    "repo": "kidzdev-unity-popup",
+    "name": "KidzDev Unity Popup",
+    "upm": "com.kidzdev.unity.popup",
     "version": "1.0.2",
     "unity": "6000.0",
-    "description": "Production-grade BGM/SFX/Ambience audio service. UniTask async, AudioMixer-backed with dB conversion, cancellable crossfades, pooled sources, plug-in clip loader, and plug-in volume store.",
-    "category": "Audio",
+    "description": "Modal dialogs for Unity you await for a typed result — ShowAsync<TResult>(), stacked popups, async transitions, and a per-popup loader split (Resources / Direct / Addressables). UniTask-only, Addressables stays optional, zero singleton coupling.",
+    "category": "UI",
     "stars": 0,
-    "updated": "2026-06-27"
+    "updated": "2026-07-05"
+  },
+  {
+    "repo": "kidzdev-unity-profanity",
+    "name": "KidzDev Unity Profanity",
+    "upm": "com.kidzdev.unity.profanity",
+    "version": "1.0.2",
+    "unity": "6000.0",
+    "description": "Production-grade multilingual profanity filter. Obfuscation-aware engine (leetspeak, separators, repeat-collapse), allowlist for false-positive prevention, plug-in data loader (Resources default, optional Addressables adapter). Supports English and Thai out of the box.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-05"
+  },
+  {
+    "repo": "kidzdev-unity-recyclable-scroll",
+    "name": "KidzDev Unity Recyclable Scroll",
+    "upm": "com.kidzdev.unity.recyclable-scroll",
+    "version": "0.4.1",
+    "unity": "6000.0",
+    "description": "High-performance recyclable ScrollRect for Unity uGUI — object pooling, linear & loop modes, variable item sizes, sync/async item loading.",
+    "category": "UI",
+    "stars": 0,
+    "updated": "2026-07-05"
+  },
+  {
+    "repo": "kidzdev-unity-responsive-fit",
+    "name": "KidzDev Unity Responsive Fit",
+    "upm": "com.kidzdev.unity.responsive-fit",
+    "version": "2.0.0",
+    "unity": "6000.0",
+    "description": "Responsive item sizing for Unity uGUI — fit scroll/grid items to any screen (items-per-view, aspect ratio, fixed columns, safe area).",
+    "category": "UI",
+    "stars": 0,
+    "updated": "2026-07-05"
+  },
+  {
+    "repo": "kidzdev-unity-safe-area",
+    "name": "KidzDev Unity Safe Area",
+    "upm": "com.kidzdev.unity.safe-area",
+    "version": "1.1.1",
+    "unity": "6000.0",
+    "description": "Two complementary notch / safe-area components for Unity uGUI. SafeArea shrinks a RectTransform to fit inside the device safe area; SafeAreaOutsideMask fills the region outside it with colour bars. Both share one change-tracking core, honour an in-editor device simulator (iPhone X/Xs Max, Pixel 3 XL), guard against Samsung first-frame NaN, and support per-axis ConformX/ConformY control.",
+    "category": "UI",
+    "stars": 0,
+    "updated": "2026-07-05"
   },
   {
     "repo": "kidzdev-unity-scroll-snap",
@@ -96,7 +118,7 @@
     "description": "ScrollRect-based snap pager for Unity uGUI — horizontal and vertical axes, dot indicators, number indicators, and prev/next navigation.",
     "category": "UI",
     "stars": 0,
-    "updated": "2026-06-27"
+    "updated": "2026-07-05"
   },
   {
     "repo": "kidzdev-unity-screen-navigator",
@@ -104,31 +126,31 @@
     "upm": "com.kidzdev.unity.screen-navigator",
     "version": "1.1.0",
     "unity": "6000.0",
-    "description": "Stack-based UI/scene navigation — push/pop history with a back button, async transitions, and an injectable animation seam. UniTask-only, zero singleton coupling.",
+    "description": "Stack-based UI/scene navigation for Unity — push/pop history with a back button, async transitions, and an injectable animation seam. UniTask-only, zero singleton coupling.",
     "category": "UI",
     "stars": 0,
-    "updated": "2026-06-27"
+    "updated": "2026-07-05"
   },
   {
-    "repo": "kidzdev-unity-safe-area",
-    "name": "KidzDev Unity Safe Area",
-    "upm": "com.kidzdev.unity.safe-area",
-    "version": "1.1.1",
-    "unity": "6000.0",
-    "description": "Two complementary notch / safe-area components for Unity uGUI — shrink a RectTransform to the device safe area, or fill the region outside it with colour bars. In-editor device simulator support and per-axis control.",
-    "category": "UI",
-    "stars": 0,
-    "updated": "2026-06-28"
-  },
-  {
-    "repo": "kidzdev-unity-popup",
-    "name": "KidzDev Unity Popup",
-    "upm": "com.kidzdev.unity.popup",
+    "repo": "kidzdev-unity-state-machine",
+    "name": "KidzDev Unity State Machine",
+    "upm": "com.kidzdev.unity.state-machine",
     "version": "1.0.0",
     "unity": "6000.0",
-    "description": "Modal dialogs you await for a typed result — ShowAsync<TResult>(), stacked popups, async transitions, and a per-popup loader split (Resources / Direct / Addressables). UniTask-only.",
-    "category": "UI",
+    "description": "Production-grade state machine for Unity — synchronous and UniTask-async flavors, optional transition graph with per-edge guards, QueueLatest policy for button-mash safety, and no-state-collapse guarantees.",
+    "category": "Core",
     "stars": 0,
-    "updated": "2026-06-29"
+    "updated": "2026-07-05"
+  },
+  {
+    "repo": "kidzdev-unity-addressables-toolkit",
+    "name": "KidzDev Unity Addressables Toolkit",
+    "upm": "com.kidzdev.unity.addressables-toolkit",
+    "version": "1.4.1",
+    "unity": "6000.0",
+    "description": "Utilities for working with Unity Addressables.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-06-14"
   }
 ]

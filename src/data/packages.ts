@@ -41,7 +41,7 @@ function categoryFor(repo: string): string {
   const r = repo.toLowerCase();
   if (/(scroll|responsive|safe-area|popup|navigator|snap|ui)/.test(r)) return 'UI';
   if (/audio/.test(r)) return 'Audio';
-  if (/local/.test(r)) return 'Localization';
+  if (/localiz/.test(r)) return 'Localization'; // localization only — not local-save (persistence)
   if (/(sheet|importer|editor)/.test(r)) return 'Editor';
   return 'Core';
 }
