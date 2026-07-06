@@ -154,6 +154,17 @@
     "updated": "2026-07-05"
   },
   {
+    "repo": "kidzdev-unity-ui-overlay",
+    "name": "KidzDev Unity UI Overlay",
+    "upm": "com.kidzdev.unity.ui-overlay",
+    "version": "1.0.0",
+    "unity": "6000.0",
+    "description": "Loading panels (fullscreen / progress / spinner) and a ref-counted input blocker for Unity. Imperative Show()/Hide() handles, no awaited result, sits above whatever screen or popup is showing. UniTask-only, no DOTween, no Addressables dependency.",
+    "category": "UI",
+    "stars": 0,
+    "updated": "2026-07-06"
+  },
+  {
     "repo": "kidzdev-unity-addressables-toolkit",
     "name": "KidzDev Unity Addressables Toolkit",
     "upm": "com.kidzdev.unity.addressables-toolkit",
