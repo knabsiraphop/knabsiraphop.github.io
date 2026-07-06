@@ -40,4 +40,4 @@ I was the **sole programmer** across two repositories (~42 commits, ~6,800 lines
 
 ## Play it
 
-The original Thai PBS Kids build is offline (its backend is no longer running), so I've put up a **[standalone WebGL demo on itch.io](https://knabsiraphop.itch.io/rescue-meowmeow-portfolio-demo)** that runs the core cutting gameplay without the backend.
+The original Thai PBS Kids build is offline (its backend is no longer running), so I've put up a **[standalone WebGL demo on itch.io](https://knabsiraphop.itch.io/rescue-meowmeow-portfolio-demo)** that runs the core cutting gameplay without the backend. The page is password-protected — use **`meowmeow`** to access it.
