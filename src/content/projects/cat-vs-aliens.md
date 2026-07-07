@@ -20,7 +20,8 @@ gallery:
   - "/img/projects/cat-vs-aliens/skin-select.webp"
   - "/img/projects/cat-vs-aliens/stage-clear.webp"
 tech: ["Unity", "C#", "Huawei HMS", "Ads", "Google Sheets"]
-links: {}
+links:
+  play: "https://knabsiraphop.itch.io/cat-vs-aliens-portfolio-demo"
 ---
 
 **Cat vs Aliens** (originally "Cat vs Covid") is a top-down survival / defense arcade game — you control a cat and tap to throw bombs at advancing waves of enemies, defending a barricade across ramping stages, with coins, a skins gacha, and leaderboards. I was the **sole programmer** — writing all of the game's code in a roughly four-week sprint — working alongside an artist and a game designer.
@@ -36,3 +37,7 @@ links: {}
 
 - A pragmatic theme pivot (COVID → Aliens) handled via a folder and asset restructure without rewriting gameplay — a practical response to app-store topic sensitivity.
 - Demonstrates range across mobile platforms: alongside a standard Google Play release, this title adds Huawei ecosystem support (HMS), showing range beyond my Google / Firebase and PlayFab work elsewhere.
+
+## Play it
+
+Try a **[standalone portfolio demo on itch.io](https://knabsiraphop.itch.io/cat-vs-aliens-portfolio-demo)**. The page is password-protected — use **`kidz`** to access it.
