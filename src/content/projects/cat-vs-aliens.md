@@ -22,6 +22,7 @@ gallery:
 tech: ["Unity", "C#", "Huawei HMS", "Ads", "Google Sheets"]
 links:
   play: "https://knabsiraphop.itch.io/cat-vs-aliens-portfolio-demo"
+  playPassword: "kidz"
 ---
 
 **Cat vs Aliens** (originally "Cat vs Covid") is a top-down survival / defense arcade game — you control a cat and tap to throw bombs at advancing waves of enemies, defending a barricade across ramping stages, with coins, a skins gacha, and leaderboards. I was the **sole programmer** — writing all of the game's code in a roughly four-week sprint — working alongside an artist and a game designer.
@@ -40,4 +41,4 @@ links:
 
 ## Play it
 
-Try a **[standalone portfolio demo on itch.io](https://knabsiraphop.itch.io/cat-vs-aliens-portfolio-demo)**. The page is password-protected — use **`kidz`** to access it.
+Try a **[standalone portfolio demo on itch.io](https://knabsiraphop.itch.io/cat-vs-aliens-portfolio-demo)** — the page is password-protected; use the password shown above the fold.

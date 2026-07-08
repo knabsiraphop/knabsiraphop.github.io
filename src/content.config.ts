@@ -32,6 +32,7 @@ const projects = defineCollection({
         appstore: z.string().optional(),
         github: z.string().optional(),
         play: z.string().optional(), // external playable URL
+        playPassword: z.string().optional(), // password gate on the `play` demo (itch.io etc.)
         video: z.string().optional(), // youtube / trailer URL
         facebook: z.string().optional(), // official facebook page
         facebookGroup: z.string().optional(), // community group

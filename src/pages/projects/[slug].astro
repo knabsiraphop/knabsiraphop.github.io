@@ -44,6 +44,7 @@ const linkDefs = [
 const linkMap = data.links as Record<string, string | undefined>;
 const links = linkDefs.filter((l) => linkMap[l.key]);
 const playLink = linkMap.play;
+const playPassword = linkMap.playPassword;
 ---
 
 <BaseLayout title={data.title} description={data.summary}>
@@ -78,9 +79,18 @@ const playLink = linkMap.play;
 
         {
           playLink && (
-            <a class="btn btn--play" href={playLink} target="_blank" rel="noopener">
-              <Icon name="play" size={20} /> Play the demo
-            </a>
+            <div class="playrow">
+              <a class="btn btn--play" href={playLink} target="_blank" rel="noopener">
+                <Icon name="play" size={20} /> Play the demo
+              </a>
+              {
+                playPassword && (
+                  <span class="playpass">
+                    Password <code>{playPassword}</code>
+                  </span>
+                )
+              }
+            </div>
           )
         }
 
@@ -216,16 +226,35 @@ const playLink = linkMap.play;
   .detail__facts dt { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 4px; }
   .detail__facts dd { font-size: 15px; font-weight: 500; }
 
+  .playrow { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 24px; }
   .btn--play {
     font-size: 17px;
     padding: 16px 28px;
-    margin-top: 24px;
     background: linear-gradient(180deg, #b599e6, var(--accent-2));
     color: #17110A;
     border-color: transparent;
     box-shadow: 0 4px 20px -6px rgba(156, 123, 214, 0.55);
   }
   .btn--play:hover { color: #17110A; box-shadow: 0 6px 28px -6px rgba(156, 123, 214, 0.8); transform: translateY(-2px); }
+  .playpass {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .playpass code {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    color: var(--accent-2);
+    background: rgba(156, 123, 214, 0.14);
+    border: 1px solid rgba(156, 123, 214, 0.45);
+  }
 
   .detail__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 
