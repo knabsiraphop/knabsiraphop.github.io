@@ -2,7 +2,6 @@
 title: "Fishing Town"
 order: 7
 role: "Client / UI Engineer"
-company: "Varisoft"
 period: "2021"
 platforms: ["WebGL"]
 tags: ["RPG", "WebGL"]
