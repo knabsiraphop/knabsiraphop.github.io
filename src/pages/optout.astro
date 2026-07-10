@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<BaseLayout title="Analytics opt-out" description="Exclude this device from visitor analytics.">
+  <section class="oo">
+    <div class="container">
+      <h1 class="oo__title">Analytics opt-out</h1>
+      <p class="muted">Exclude this browser/device from visitor tracking on this site. Setting persists until you clear it or clear site data.</p>
+      <p class="oo__status" id="oo-status">Checking status…</p>
+      <div class="oo__cta">
+        <button class="btn btn--primary" id="oo-disable">Disable tracking on this device</button>
+        <button class="btn" id="oo-enable">Re-enable tracking</button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  const KEY = 'umami.disabled';
+  const statusEl = document.getElementById('oo-status');
+  const render = () => {
+    statusEl.textContent = localStorage.getItem(KEY)
+      ? 'Tracking is currently DISABLED on this device.'
+      : 'Tracking is currently ENABLED on this device.';
+  };
+  document.getElementById('oo-disable').addEventListener('click', () => {
+    localStorage.setItem(KEY, 1);
+    render();
+  });
+  document.getElementById('oo-enable').addEventListener('click', () => {
+    localStorage.removeItem(KEY);
+    render();
+  });
+  render();
+</script>
+
+<style>
+  .oo { padding-block: clamp(80px, 16vw, 180px); text-align: center; }
+  .oo__title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); margin-bottom: 12px; }
+  .oo__status { font-weight: 600; margin-top: 8px; }
+  .oo__cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+</style>

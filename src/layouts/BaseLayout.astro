@@ -92,11 +92,12 @@ const ogImage = new URL(image, Astro.site);
       }
     </script>
 
-    <!-- GoatCounter analytics (skips localhost automatically) -->
+    <!-- Umami analytics (data-domains skips localhost dev) -->
     <script
       is:inline
-      data-goatcounter="https://knabsiraphop.goatcounter.com/count"
-      async
-      src="https://gc.zgo.at/count.js"></script>
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="7cb7194b-2c95-4c90-921f-684c0e0b1150"
+      data-domains="knabsiraphop.github.io"></script>
   </body>
 </html>
