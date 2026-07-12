@@ -174,5 +174,60 @@
     "category": "Core",
     "stars": 0,
     "updated": "2026-06-14"
+  },
+  {
+    "repo": "kidzdev-unity-analytics",
+    "name": "KidzDev Unity Analytics",
+    "upm": "com.kidzdev.unity.analytics",
+    "version": "0.1.0",
+    "unity": "6000.0",
+    "description": "Minimal analytics event-logging facade. Validates event/parameter names against Firebase Analytics limits before dispatch, buffers events logged before initialization, and warns (instead of silently dropping) on violations. Core has zero dependencies; the Firebase adapter ships as an optional sample.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-12"
+  },
+  {
+    "repo": "kidzdev-unity-grid",
+    "name": "KidzDev Unity Grid",
+    "upm": "com.kidzdev.unity.grid",
+    "version": "0.1.0",
+    "unity": "6000.0",
+    "description": "2D/3D grid system: pure-C# per-cell data storage, A* pathfinding, multi-cell footprint placement, and nearest-available-cell search, plus a thin Unity layer for world/cell conversion and mouse/touch picking. Not a Tilemap replacement — an optional adapter aligns it to an existing UnityEngine.Grid when one is used for rendering. Zero external dependencies.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-12"
+  },
+  {
+    "repo": "kidzdev-unity-singleton",
+    "name": "KidzDev Unity Singleton",
+    "upm": "com.kidzdev.unity.singleton",
+    "version": "1.0.0",
+    "unity": "6000.0",
+    "description": "Generic singleton bases: thread-safe plain C# Singleton<T>, auto-creating MonoSingleton<T>, and non-creating SceneSingleton<T>. Handles the MonoBehaviour lifecycle pitfalls (quit-teardown resurrection, domain-reload staleness, duplicate detection, DDOL placement) so consumers don't have to. Zero external dependencies.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-12"
+  },
+  {
+    "repo": "kidzdev-unity-sliced-fill-image",
+    "name": "KidzDev Unity Sliced Fill Image",
+    "upm": "com.kidzdev.unity.sliced-fill-image",
+    "version": "1.0.0",
+    "unity": "6000.0",
+    "description": "Fixes Unity's Image.Type.Filled + Type.Sliced clipping bug with a mesh-correct SlicedFilledImage, so 9-sliced borders stay fixed-size at any fill amount. Zero dependencies beyond uGUI.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-11"
+  },
+  {
+    "repo": "kidzdev-unity-ui-animation",
+    "name": "KidzDev Unity UI Animation",
+    "upm": "com.kidzdev.unity.ui-animation",
+    "version": "1.0.0",
+    "unity": "6000.0",
+    "description": "A UI tweening toolkit for uGUI: fade/scale/move/punch/shake/color extension methods, a designer-facing step-sequence player, and button press feedback. No third-party animation dependency by default; an optional DOTween-backed driver auto-compiles when DOTween is already installed in the consumer's project.",
+    "category": "UI",
+    "stars": 0,
+    "updated": "2026-07-11"
   }
 ]
