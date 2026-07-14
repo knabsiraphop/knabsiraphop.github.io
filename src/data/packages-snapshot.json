@@ -80,12 +80,23 @@
     "repo": "kidzdev-unity-recyclable-scroll",
     "name": "KidzDev Unity Recyclable Scroll",
     "upm": "com.kidzdev.unity.recyclable-scroll",
-    "version": "0.4.1",
+    "version": "0.6.0",
     "unity": "6000.0",
     "description": "High-performance recyclable ScrollRect for Unity uGUI — object pooling, linear & loop modes, variable item sizes, sync/async item loading.",
     "category": "UI",
     "stars": 0,
-    "updated": "2026-07-05"
+    "updated": "2026-07-14"
+  },
+  {
+    "repo": "kidzdev-unity-chat-view",
+    "name": "KidzDev Unity Chat View",
+    "upm": "com.kidzdev.unity.chat-view",
+    "version": "0.1.0",
+    "unity": "6000.0",
+    "description": "In-game chat UI on the recyclable-scroll engine — multi-channel feed, text/sticker bubbles, inline emote shortcodes, reply-jump-to-source, new-message pill, backward pagination, and a compose box with a mute/rate-limit gate.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-14"
   },
   {
     "repo": "kidzdev-unity-responsive-fit",
