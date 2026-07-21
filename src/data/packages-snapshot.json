@@ -25,12 +25,12 @@
     "repo": "kidzdev-unity-extensions",
     "name": "KidzDev Unity Extensions",
     "upm": "com.kidzdev.unity.extensions",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "unity": "6000.0",
     "description": "Handy C# / Unity extension methods — strings, collections, arrays, dictionaries, and more.",
     "category": "Core",
     "stars": 0,
-    "updated": "2026-07-05"
+    "updated": "2026-07-19"
   },
   {
     "repo": "kidzdev-unity-local-save",
@@ -240,5 +240,49 @@
     "category": "UI",
     "stars": 0,
     "updated": "2026-07-11"
+  },
+  {
+    "repo": "kidzdev-unity-notifications",
+    "name": "KidzDev Unity Notifications",
+    "upm": "com.kidzdev.unity.notifications",
+    "version": "0.1.0",
+    "unity": "6000.0",
+    "description": "Cross-platform local notification scheduler over com.unity.mobile.notifications. One facade + INotificationScheduler seam replaces per-platform #if branching; NotificationId derives both Android int and iOS string identities from a single key so the two can never be hand-mapped out of sync. Typed PermissionDenied result (no more permission-wait hangs), facade-level idempotency (cancel-before-reschedule for one-shots, keep-existing for repeating), and cached async launch-notification inspection for deep-link routing.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-16"
+  },
+  {
+    "repo": "kidzdev-unity-toast",
+    "name": "KidzDev Unity Toast",
+    "upm": "com.kidzdev.unity.toast",
+    "version": "0.1.1",
+    "unity": "6000.0",
+    "description": "Non-blocking, auto-dismissing notification banners (snackbars) for Unity uGUI. Fire-and-forget Show(), capped stack with newest-evicts-oldest admission, slide+fade transition, no DOTween, no Addressables dependency.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-18"
+  },
+  {
+    "repo": "kidzdev-unity-red-dot",
+    "name": "KidzDev Unity Red Dot",
+    "upm": "com.kidzdev.unity.red-dot",
+    "version": "0.1.0",
+    "unity": "6000.0",
+    "description": "Hierarchical notification-badge tree for F2P-style UI: SetCount(\"shop/daily\", 1) lights up shop and the root too, and clears back down once no descendant is still dirty. Unified count model (a dot is just count 0/1), eager O(1)-read aggregation, push-based Observe, uGUI binder. Zero external dependencies.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-19"
+  },
+  {
+    "repo": "kidzdev-unity-render-capture",
+    "name": "KidzDev Unity Render Capture",
+    "upm": "com.kidzdev.unity.render-capture",
+    "version": "0.1.0",
+    "unity": "6000.0",
+    "description": "Render an isolated GameObject through its own camera into an owned RenderTexture — live RawImage feed, one-shot freeze, and export to Texture2D/PNG bytes/Sprite. Plus a whole-screen ScreenCapture grab and an existing-camera capture helper. Multi-instance-safe via spatial isolation (no shared static camera/texture), pipeline-agnostic via Unity's public render-pipeline API (Built-in/URP/HDRP — see README for what's runtime-verified). Zero dependencies beyond UniTask.",
+    "category": "Core",
+    "stars": 0,
+    "updated": "2026-07-21"
   }
 ]
