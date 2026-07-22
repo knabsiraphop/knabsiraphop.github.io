@@ -6,9 +6,11 @@ import ProjectCard from '../components/ProjectCard.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 import { getCollection } from 'astro:content';
+import { fetchPublishedPackages } from '../data/packages';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 const featured = projects.filter((p) => p.data.featured);
+const packageCount = (await fetchPublishedPackages()).length;
 
 // `git shortlog -sn` of the real work — commit counts from the WorkSummary evidence.
 // Bar widths are perceptually scaled so smaller projects stay visible; the numbers are exact.
@@ -143,7 +145,7 @@ const strengths = [
         <li><span class="hl__ico"><Icon name="gamepad" size={17} /></span> Lead engineer on a {site.years}-year social MMO</li>
         <li><span class="hl__ico"><Icon name="play" size={15} /></span> Sole programmer on shipped mobile &amp; WebGL titles</li>
         <li><span class="hl__ico"><Icon name="code" size={17} /></span> Live-ops, IAP, gacha &amp; economy systems</li>
-        <li><span class="hl__ico"><Icon name="external" size={15} /></span> Open-source Unity packages (UPM)</li>
+        <li><span class="hl__ico"><Icon name="external" size={15} /></span> {packageCount} open-source Unity packages (UPM)</li>
       </ul>
     </div>
   </Section>
