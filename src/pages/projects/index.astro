@@ -32,7 +32,7 @@ const tags = ['All', ...Array.from(companySet).sort(), ...Array.from(tagSet).sor
       <div class="filters" data-reveal role="group" aria-label="Filter projects by tag">
         {
           tags.map((t, i) => (
-            <button class:list={['filter', { 'is-active': i === 0 }]} data-filter={t} type="button">
+            <button class:list={['filter', { 'is-active': i === 0 }]} data-filter={t} type="button" aria-pressed={i === 0}>
               {t}
             </button>
           ))
@@ -55,7 +55,11 @@ const tags = ['All', ...Array.from(companySet).sort(), ...Array.from(tagSet).sor
   buttons.forEach((btn) =>
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter || 'All';
-      buttons.forEach((b) => b.classList.toggle('is-active', b === btn));
+      buttons.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
       let shown = 0;
       cards.forEach((card) => {
         const tags = (card.dataset.tags || '').split('|');

@@ -26,7 +26,7 @@ const strengths = [
   {
     name: 'Context',
     domain: 'Strategic Thinking',
-    note: "I read a system by its history — how it got here and why. On a five-year MMO codebase, that's the line between a safe change and a regression.",
+    note: `I read a system by its history — how it got here and why. On a ${site.years}-year MMO codebase, that's the line between a safe change and a regression.`,
   },
   {
     name: 'Deliberative',
@@ -95,7 +95,7 @@ const strengths = [
         </ul>
         <div class="shortlog__foot">
           <span><strong>10+</strong> titles shipped</span>
-          <span><strong>6</strong> years in production</span>
+          <span><strong>{site.years}</strong> years in production</span>
           <span><strong>3</strong> backends: Nakama · PlayFab · Firebase</span>
         </div>
       </div>
@@ -140,7 +140,7 @@ const strengths = [
       </div>
 
       <ul class="about__highlights" data-reveal-group>
-        <li><span class="hl__ico"><Icon name="gamepad" size={17} /></span> Lead engineer on a 5-year social MMO</li>
+        <li><span class="hl__ico"><Icon name="gamepad" size={17} /></span> Lead engineer on a {site.years}-year social MMO</li>
         <li><span class="hl__ico"><Icon name="play" size={15} /></span> Sole programmer on shipped mobile &amp; WebGL titles</li>
         <li><span class="hl__ico"><Icon name="code" size={17} /></span> Live-ops, IAP, gacha &amp; economy systems</li>
         <li><span class="hl__ico"><Icon name="external" size={15} /></span> Open-source Unity packages (UPM)</li>
@@ -153,7 +153,7 @@ const strengths = [
     id="experience"
     eyebrow="git log --graph"
     title="Career, by branch"
-    sub="Five years on main at Varisoft, with a freelance branch that forked off in 2021 and merged back — read newest-first, like a real log."
+    sub={`${site.years} years on main at Varisoft, with a freelance branch that forked off in 2021 and merged back — read newest-first, like a real log.`}
     class="section--alt"
   >
     <div class="graph" data-reveal-group>
@@ -185,7 +185,7 @@ const strengths = [
           <h3 class="grow__title">Lead client engineer · ZabbWorld: Secret Stories</h3>
           <p class="grow__co"><span class="grow__coName">Varisoft</span> · Unity Game Developer</p>
           <p class="grow__body">
-            #1 contributor with 8,400+ commits over 5+ years on the studio's flagship social MMO — plus complete
+            #1 contributor with 8,400+ commits over {site.years}+ years on the studio's flagship social MMO — plus complete
             titles shipped as sole programmer: Cat vs Aliens (Google Play + Huawei AppGallery), Once Pro Shoot and
             Rescue Meow Meow on WebGL. Shipped against Nakama, PlayFab, and Firebase.
           </p>

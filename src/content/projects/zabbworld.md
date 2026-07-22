@@ -7,7 +7,7 @@ period: "2020 – Present"
 platforms: ["Android", "iOS"]
 tags: ["MMO", "Multiplayer", "Live-ops", "Mobile"]
 featured: true
-summary: "Lead client engineer on a 5-year social life-sim MMO — real-time multiplayer, the avatar pipeline, live-ops, and the in-game economy."
+summary: "Lead client engineer on a 6-year social life-sim MMO — real-time multiplayer, the avatar pipeline, live-ops, and the in-game economy."
 status: "Live"
 cover: "/img/projects/zabbworld/banner-1.webp"
 icon: "/img/projects/zabbworld/icon.webp"
@@ -32,7 +32,7 @@ links:
 
 **ZabbWorld: Secret Stories** (internal namespace `ZabbWorld`) is a Thai social life-simulation MMO — a persistent, avatar-driven virtual world with player housing, careers, dozens of mini-games, marriage, clubs, voice/text chat, and a deep cosmetic + crafting + gacha economy, localized for Thailand (Songkran and Loy Krathong appear as live events).
 
-It is the flagship of the studio and the largest project I've worked on: **21,000+ total commits**, and I am the **#1 contributor with 8,400+ authored commits over 5+ continuous years**, cutting release tags into the mainline as the lead client engineer.
+It is the flagship of the studio and the largest project I've worked on: **21,000+ total commits**, and I am the **#1 contributor with 8,400+ authored commits over 6+ continuous years**, cutting release tags into the mainline as the lead client engineer.
 
 ## What I built
 
@@ -46,6 +46,6 @@ It is the flagship of the studio and the largest project I've worked on: **21,00
 
 ## Engineering notes
 
-- Sustained architecture investment across five years: authored the original `AvatarSystem` skin-builder (later performance-optimized into `AvatarSystemV2` by a teammate), repeated localization and chat refactors, assembly splits, and Addressables load-time optimization.
+- Sustained architecture investment across six years: authored the original `AvatarSystem` skin-builder (later performance-optimized into `AvatarSystemV2` by a teammate), repeated localization and chat refactors, assembly splits, and Addressables load-time optimization.
 - Introduced a centralized analytics event system threaded across shop, craft, career, mini-games, inventory, avatar, and networking.
 - Built standalone editor tools (avatar editor, furniture grid tool) for the very systems I own — see [Unity Editor Tools](/projects/unity-editor-tools/).

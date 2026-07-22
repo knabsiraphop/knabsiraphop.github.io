@@ -50,7 +50,7 @@ const categories = ['All', ...Array.from(catSet).sort()];
       <div class="filters" data-reveal role="group" aria-label="Filter packages by category">
         {
           categories.map((c, i) => (
-            <button class:list={['filter', { 'is-active': i === 0 }]} data-filter={c} type="button">
+            <button class:list={['filter', { 'is-active': i === 0 }]} data-filter={c} type="button" aria-pressed={i === 0}>
               {c}
             </button>
           ))
@@ -122,7 +122,11 @@ const categories = ['All', ...Array.from(catSet).sort()];
   buttons.forEach((btn) =>
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter || 'All';
-      buttons.forEach((b) => b.classList.toggle('is-active', b === btn));
+      buttons.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
       let shown = 0;
       cards.forEach((card) => {
         const show = filter === 'All' || card.dataset.cat === filter;

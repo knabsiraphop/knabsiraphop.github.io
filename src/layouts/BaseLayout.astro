@@ -4,10 +4,10 @@ import '@fontsource-variable/fraunces/opsz.css';
 import '@fontsource/ibm-plex-sans/400.css';
 import '@fontsource/ibm-plex-sans/500.css';
 import '@fontsource/ibm-plex-sans/600.css';
-import '@fontsource/ibm-plex-sans/700.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import '@fontsource/ibm-plex-mono/600.css';
+import '@fontsource/ibm-plex-mono/700.css';
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -62,6 +62,24 @@ const ogImage = new URL(image, Astro.site);
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: site.name,
+      alternateName: site.nick,
+      jobTitle: site.role,
+      url: String(Astro.site),
+      image: new URL('/img/headshot.jpg', Astro.site).toString(),
+      sameAs: [site.socials.github, site.socials.linkedin],
+      address: { '@type': 'PostalAddress', addressLocality: 'Bangkok', addressCountry: 'TH' },
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: site.name,
+      url: String(Astro.site),
+    })} />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
