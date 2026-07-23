@@ -17,7 +17,7 @@ links:
   facebook: "https://web.facebook.com/Fishingtownbsc2021/"
 ---
 
-**Fishing Town** is a server-authoritative fishing RPG built by a large team. I contributed as one client / UI engineer during an intense 5-day release sprint (42 commits), shipping rod-enhancement, repair, inventory, and telemetry features.
+**Fishing Town** is a server-authoritative fishing RPG built by a large team. I contributed as one client / UI engineer during an intense 5-day release sprint (42 commits, ~19 code-bearing, roughly +750/−330 lines of C#), shipping rod-enhancement, repair, inventory, currency, and telemetry features.
 
 ## What I built
 
@@ -25,8 +25,9 @@ links:
 - **Repair system** — a new "rods in the blacksmith" status screen (infinite-scroll), enhance-level-aware repair pricing, and a live repair-completion countdown.
 - **Inventory** — material stacking, single-rod in-place refresh, and type-aware sorting (fish by rarity / id / size, rods by rarity / id / enhance).
 - **Currency & deposit** — widened the in-game currency to `long` for large balances and hardened the deposit flow with `TryParse` and explicit error popups instead of throwing parses.
-- **Telemetry & gating** — a fire-and-forget activity-log system instrumented across the fishing loop, and a boot-time server-status check that blocks play during maintenance windows.
+- **Telemetry & gating** — built on the sprint's final day: a fire-and-forget activity-log system instrumented across the entire fishing loop (every action, every outcome, every map transition), and a boot-time server-status check that blocks play during maintenance windows.
 
 ## Engineering notes
 
 - Worked within an existing finite-state-machine UI architecture, adding each new screen as a state + panel consistently with the codebase's patterns.
+- Under release pressure, the sprint leaned hard into defensive hardening — throwing parses swapped for `TryParse`, null-ownership and negative-duration guards, re-entrant particle feedback — the unglamorous work that decides whether a feature survives contact with real players.

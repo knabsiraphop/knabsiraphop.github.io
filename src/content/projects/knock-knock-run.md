@@ -7,7 +7,7 @@ period: "2022"
 platforms: ["Android"]
 tags: ["Multiplayer", "Horror", "Mobile"]
 featured: false
-summary: "Multiplayer survival-horror — I picked the project up for its final stretch, stabilized the build, and led the launch to Google Play."
+summary: "Multiplayer survival-horror — I picked the project up for its final stretch, stabilized the build, and carried it through to a Google Play launch."
 status: "Delisted"
 cover: "/img/projects/knock-knock-run/banner.webp"
 icon: "/img/projects/knock-knock-run/icon.webp"
@@ -38,9 +38,8 @@ links:
 I joined for the project's critical final phase, after the previous developer left, and my job was to get it out the door:
 
 - **Stabilized for launch** — tracked down and fixed the launch-blocking bugs and cleaned up the rough edges left in the build.
-- **Polished the gameplay** — tightened the moment-to-moment mechanics so the search-and-escape loop actually felt playable.
-- **Optimized performance** — profiled and trimmed to keep it running smoothly on Android hardware.
-- **Owned the release** — ran the final development cycle and led the deployment to the Google Play Store for a clean launch.
+- **Polished to spec** — worked from producer and design direction to bring the search-and-escape loop up to the bar needed for launch.
+- **Carried the release** — ran the final development cycle and pushed the build through to a clean Google Play launch.
 
 ## Engineering notes
 

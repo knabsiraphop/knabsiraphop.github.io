@@ -14,7 +14,7 @@
   --surface: #16121F;       /* violet-tinged panel */
   --surface-2: #1F1A2E;     /* raised panel */
   --text: #EFE7D4;          /* parchment — headings / strong */
-  --prose: #C7BCA8;         /* softer parchment — body copy */
+  --prose: #B0A48F;         /* softer parchment — body copy, dimmed to cut halation vs bg */
   --text-dim: #8A8098;      /* muted violet-grey */
   --accent: #D4A24C;        /* antique gold — sigils, spent sparingly */
   --accent-soft: #E7C57E;   /* lighter gold for hover/text */
@@ -175,7 +175,15 @@ h1, h2, h3, h4 {
 .surface { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); }
 
 /* ---------- Prose (markdown body on project pages) ---------- */
-.prose { color: var(--prose); font-size: 16px; }
+.prose {
+  color: var(--prose);
+  font-size: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 40px);
+}
+.prose, .prose p, .prose li { font-weight: 500; }
 .prose > * + * { margin-top: 14px; }
 .prose h2 { font-size: 24px; margin-top: 32px; }
 .prose h3 { font-size: 18px; margin-top: 24px; color: var(--accent-soft); font-family: var(--font-display); font-weight: 500; }
@@ -191,7 +199,7 @@ h1, h2, h3, h4 {
   color: var(--accent);
 }
 .prose a { color: var(--accent-soft); text-decoration: underline; text-underline-offset: 3px; }
-.prose strong { color: var(--text); }
+.prose strong { color: var(--accent-soft); font-weight: 600; }
 
 /* ---------- Helpers ---------- */
 .muted { color: var(--text-dim); }
