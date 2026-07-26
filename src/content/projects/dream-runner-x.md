@@ -7,7 +7,7 @@ period: "2026 – Present"
 platforms: ["Android", "iOS"]
 tags: ["Live-ops", "Multiplayer", "Mobile"]
 featured: true
-summary: "Owner of core live-ops systems — mail, shop + IAP, gachapon, and daily rewards — on a new multiplayer running game."
+summary: "Owner of core live-ops systems — mail, shop + IAP, gachapon, daily rewards, events, guild, and tournament — on a new multiplayer running game."
 status: "In development"
 cover: "/img/projects/dream-runner-x/banner.webp"
 icon: "/img/projects/dream-runner-x/icon.webp"
@@ -31,8 +31,10 @@ links: {}
 - **Gachapon** — roll flow with cost splits, rate-up detail popups, a summoning scene with rarity colors and SFX, and reward popups.
 - **Daily / weekly / monthly rewards** — a board-agnostic reward system with claim guards, RPC, and correct cycle reset.
 - **Title, account & settings** — Firebase SDK integration, a Google-Sheet-driven localization system (EN / TH), encrypted local save, and account create / login flows.
+- **Live-ops expansion** — an event system (runner pass, forward gacha, section views), a tutorial system with per-step guide states and in-race prompts, guild (create / check-in / donate), tournament (matchmaking, spectator, live countdown), and a "how-to-obtain" popup subsystem wired across item and character detail.
+- **Stability hardening** — a systematic null-guard sweep across scene teardown, RPC-retry, and match-instance race paths for a Crashlytics-driven stabilization pass ahead of release.
 
 ## Engineering notes
 
-- Lobby and matchmaking UI: room selection, quick-join, team slots, invites, and ticket currency.
+- Lobby and matchmaking UI: room selection, quick-join, team slots, invites, ticket currency, and a global search service for tournament matchmaking.
 - Strong emphasis on SOLID structure — gateways, repositories, and interfaces with reusable pooled UI components.
