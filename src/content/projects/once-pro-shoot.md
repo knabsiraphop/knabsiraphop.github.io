@@ -16,7 +16,8 @@ hero:
 gallery:
   - "/img/projects/once-pro-shoot/gameplay.webp"
 tech: ["Unity", "C#", "WebGL", "Firebase", "UniTask", "Spine", "Google Sheets API"]
-links: {}
+links:
+  play: "https://knabsiraphop.itch.io/one-pro-shoot-portfolio"
 ---
 
 **Once Pro Shoot** is a 2D vertical shoot-'em-up with a candy / dessert theme, built for mobile-web (WebGL). You drag to move a princess at the bottom of the screen and tap or hold to fire upward at descending dessert enemies and bosses; collecting power-ups triggers a temporary power mode, and game-over posts your score to an online leaderboard.
@@ -34,3 +35,7 @@ I was the **sole programmer** — every line of the game's code across all branc
 ## Engineering notes
 
 - Reuses a studio "engine layer" I maintained across titles — singletons, object pooling, and an audio system with mixer math and BGM cross-fade.
+
+## Play it
+
+Try a **[standalone portfolio demo on itch.io](https://knabsiraphop.itch.io/one-pro-shoot-portfolio)**.

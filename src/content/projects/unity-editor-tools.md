@@ -17,7 +17,8 @@ gallery:
   - "/img/projects/unity-editor-tools/avatar-animation.webp"
   - "/img/projects/unity-editor-tools/furniture-tool.webp"
 tech: ["Unity Editor", "C#", "Spine", "UniTask", "Object Pooling"]
-links: {}
+links:
+  play: "https://knabsiraphop.itch.io/mwavatareditor-portfolio"
 ---
 
 Two standalone Unity tools I built to support [ZabbWorld](/projects/zabbworld/)'s two biggest content-customization surfaces — used by artists and developers to validate content outside the full game.
@@ -37,3 +38,7 @@ A focused grid-placement harness for the housing system, built so new 3D artists
 ## Engineering notes
 
 - The whole value is fidelity: these tools reuse production classes (swapping Addressables / skin-manager persistence for `Resources.Load` and disk reads) rather than re-implementing them.
+
+## Play it
+
+Try a **[standalone MwAvatarEditor demo on itch.io](https://knabsiraphop.itch.io/mwavatareditor-portfolio)**.

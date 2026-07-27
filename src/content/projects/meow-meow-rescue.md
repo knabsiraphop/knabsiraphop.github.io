@@ -22,8 +22,7 @@ gallery:
   - "/img/projects/meow-meow-rescue/gameplay-5.webp"
 tech: ["Unity", "C#", "WebGL", "Firebase Auth + Cloud Functions", "UniTask", "Spine", "Smart Slicer 2D Pro"]
 links:
-  play: "https://knabsiraphop.itch.io/rescue-meowmeow-portfolio-demo"
-  playPassword: "meowmeow"
+  play: "https://knabsiraphop.itch.io/rescue-meowmeow-portfolio"
   site: "https://kids.thaipbs.or.th/games/5fe1a3c76ca51f3ff97d5f0d"
 ---
 
@@ -41,4 +40,4 @@ I was the **sole programmer** across two repositories (~42 commits, ~6,800 lines
 
 ## Play it
 
-The original Thai PBS Kids build is offline (its backend is no longer running), so I've put up a **[standalone WebGL demo on itch.io](https://knabsiraphop.itch.io/rescue-meowmeow-portfolio-demo)** that runs the core cutting gameplay without the backend. The page is password-protected — use the password shown above the fold.
+The original Thai PBS Kids build is offline (its backend is no longer running), so I've put up a **[standalone WebGL demo on itch.io](https://knabsiraphop.itch.io/rescue-meowmeow-portfolio)** that runs the core cutting gameplay without the backend.
